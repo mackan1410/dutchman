@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset = "utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Log in</title>
+
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/login.css">
+</head>
+
+<body>
+
+  <div class="form-container hidden">
+    <h1>Login</h1>
+    <form id="login-form">
+      <input type="text" id="username" name="username" value="" placeholder="Username..."><br><br>
+      <input type="text" id="password" name="password" value="" placeholder="Password..."><br>
+      <p class="error-message hidden">Wrong username or password. Try again.</p>
+      <input type="submit" value="Login" />
+    </form>
+  </div>
+
+  <script type="text/javascript" src="scripts/ModelFunctions.js"></script>
+  <script type="text/javascript" src="scripts/cookies.js"></script>
+  <script type="text/javascript" src="scripts/login.js"></script>
+  <script>
+
+    window.onload = function() {
+      // Handle case when user is already logged in.
+      // TODO: redirect user to another page
+      if(loggedIn()) {
+        console.log('Logged in!');
+        return null;
+      }
+
+      // Handle a failed login
+      if(loginError()) {
+        document.querySelector('.error-message').classList.remove('hidden'); //display error message
+      }
+
+      document.querySelector('.form-container').classList.remove('hidden'); //display the login form
+      document.getElementById('login-form').addEventListener('submit', function(e) {
+        let username = document.getElementById('username').value; //get submitted username
+        let password = document.getElementById('password').value; //get submitted password
+        login(username, password);
+      });
+    }
+  </script>
+
+</body>
+
+</html>

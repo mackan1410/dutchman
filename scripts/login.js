@@ -16,7 +16,7 @@ function login(username, password) {
     return false;
   }
 
-  setCookie('user', user.user_id, 0.1); //store the users id
+  setCookie('user', JSON.stringify({'id': user.user_id, 'credentials': user.credentials}), 0.1); //store the users id and credentials
   setCookie('loginerror', null, 0); //remove cookie for login error in case it's set
   return true;
 }
@@ -26,6 +26,22 @@ function login(username, password) {
 */
 function logout() {
   setCookie('user', null, 0); // set expiry time to 0 in order to remove cookie
+}
+
+/*
+  Get the id of the currently logged in user
+*/
+function getUserId() {
+  let userObject = JSON.parse(getCookie('user'));
+  return userObject ? userObject.id : null;
+}
+
+/*
+  Get the credentials of the currently logged in user
+*/
+function getUserCredentials() {
+  let userObject = JSON.parse(getCookie('user'));
+  return userObject ? userObject.credentials : null;
 }
 
 /*

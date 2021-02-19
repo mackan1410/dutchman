@@ -27,14 +27,15 @@
   <script type="text/javascript" src="scripts/login.js"></script>
   <script>
 
-    window.onload = function() {
-      // Handle case when user is already logged in.
-      // TODO: redirect user to another page
-      if(loggedIn()) {
-        console.log('Logged in!');
-        return null;
-      }
+  window.onload = function() {
+    // Handle case when user is already logged in.
+    // TODO: redirect user to another page
+    if(loggedIn()) {
+      console.log('Logged in!');
+      return null;
+    }
 
+    DB.loadUsers().then(function() {
       // Handle a failed login
       if(loginError()) {
         document.querySelector('.error-message').classList.remove('hidden'); //display error message
@@ -46,7 +47,9 @@
         let password = document.getElementById('password').value; //get submitted password
         login(username, password);
       });
-    }
+
+    });
+  }
   </script>
 
 </body>

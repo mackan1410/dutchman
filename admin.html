@@ -21,7 +21,8 @@
 	<script>
 		window.onload = function() {
 
-      if(!loggedIn()) {
+			// if not logged in or user is a vip customer
+      if(!loggedIn() || getUserCredentials() === '3') {
         window.location.replace('./');
         return null;
       }

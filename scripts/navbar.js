@@ -53,4 +53,8 @@ function navbar(container, page){
     $('#login-opt').hide();
     let username = DB.getUserFromId(getUserId()).username;
     $('.dropdown-text').html(username);
+
+    //disable the admin page if user is a vip customer
+    if(getUserCredentials() === '3') $('#admin-opt').hide();
+
 }

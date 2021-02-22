@@ -51,7 +51,7 @@ function navbar(container, page){
 
     // hide the login option and display the username if logged in
     $('#login-opt').hide();
-    let username = DB.getUserFromId(getUserId()).username;
+    let username = getUserFromId(getUserId()).username;//DB.getUserFromId(getUserId()).username;
     $('.dropdown-text').html(username);
 
     //disable the admin page if user is a vip customer

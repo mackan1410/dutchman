@@ -42,7 +42,7 @@
       return null;
     }
 
-    DB.loadUsers().then(function() {
+    initData(function() {
       navbar($('#navbar-container'), 'login');
 
       // Handle a failed login
@@ -57,7 +57,7 @@
         login(username, password);
       });
 
-    });
+    })
   }
   </script>
 

@@ -10,7 +10,7 @@
   Otherwise a login error is set and false is returned.
 */
 function login(username, password) {
-  let user = DB.getUserFromUsername(username);
+  let user = getUserFromUsername(username);//DB.getUserFromUsername(username);
   if(!user || ( password != user.password )) {
     setCookie('loginerror', null, 0.01) //set cookie for login error
     return false;

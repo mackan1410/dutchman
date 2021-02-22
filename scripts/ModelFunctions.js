@@ -67,10 +67,13 @@ function Data() {
   return this;
 }
 
-var DB = new Data();
+var DB = new Data(); // create a data object so that data can be loaded from the json files
 
 /*
   The below functions are used for storing/loading from localStorage
+*/
+/*
+  loads all data and stores it in localStorage if the data is not already present in localStorage.
 */
 function initData(callback) {
   DB.loadAll(function() {
@@ -86,41 +89,68 @@ function initData(callback) {
   });
 }
 
+/*
+  remove an item from localStorage by key
+*/
 function removeItem(key) {
   localstorage.removeItem(key);
 }
 
+/*
+  set an item in localStorage
+*/
 function setItem(key, value) {
   localStorage.setItem(key, value);
 }
 
+/*
+  store all users in localStorage.
+*/
 function setUsers(users) {
   setItem('users', JSON.stringify(users));
 }
 
+/*
+  store all beverages in localStorage.
+*/
 function setBeverages(beverages) {
   setItem('beverages', JSON.stringify(beverages));
 }
 
+/*
+  get an item from localStorage by key
+*/
 function getItem(key) {
   let item = localStorage.getItem(key);
   return !item ? null : JSON.parse(item);
 }
 
+/*
+  get all users from localStorage
+*/
 function getUsers() {
   return getItem('users');
 }
 
+/*
+  get all beverages from localStorage
+*/
 function getBeverages() {
   return getItem('beverages');
 }
 
+/*
+  get a users information by username
+*/
 function getUserFromUsername(username) {
   let users = getUsers();
   if(users === null) return null;
   return users.find(u => u.username === username);
 }
 
+/*
+  get a users information by id
+*/
 function getUserFromId(id) {
   let users = getUsers();
   if(users === null) return null;

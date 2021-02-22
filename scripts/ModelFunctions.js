@@ -1,4 +1,11 @@
 
+/*
+  This file contains functions for loading and handling the data used by
+  the application.
+
+  Author: Markus Hellgren
+*/
+
 function loadJSON(callback, file) {
     // We load the file using an XMLHttpRequest, which is part of AJAX
     //
@@ -43,7 +50,7 @@ function Data() {
       loadJSON(function(response){
         self.users = JSON.parse(response);
         resolve();
-      }, '/thedutchman/DBFilesJSON/dutchman_table_users.json');
+      }, 'DBFilesJSON/dutchman_table_users.json');
     });
   };
 
@@ -53,19 +60,99 @@ function Data() {
       loadJSON(function(response){
         self.beverages = JSON.parse(response);
         resolve();
-      }, '/thedutchman/DBFilesJSON/dutchman_table_sbl_beer.json');
+      }, 'DBFilesJSON/dutchman_table_sbl_beer.json');
     });
-  }
-
-  this.getUserFromUsername = function(username){
-    return this.users.find(u => u.username == username);
-  }
-
-  this.getUserFromId = function(id){
-    return this.users.find(u => u.user_id == id);
   }
 
   return this;
 }
 
-var DB = new Data();
+var DB = new Data(); // create a data object so that data can be loaded from the json files
+
+/*
+  The below functions are used for storing/loading from localStorage
+*/
+/*
+  loads all data and stores it in localStorage if the data is not already present in localStorage.
+*/
+function initData(callback) {
+  DB.loadAll(function() {
+    if(getUsers() === null){
+      setUsers(DB.users);
+      console.log('storing users in localStorage');
+    }
+    if(getBeverages() === null){
+      setBeverages(DB.beverages);
+      console.log('Storing beverages in localstorage');
+    }
+    if(callback) callback();
+  });
+}
+
+/*
+  remove an item from localStorage by key
+*/
+function removeItem(key) {
+  localstorage.removeItem(key);
+}
+
+/*
+  set an item in localStorage
+*/
+function setItem(key, value) {
+  localStorage.setItem(key, value);
+}
+
+/*
+  store all users in localStorage.
+*/
+function setUsers(users) {
+  setItem('users', JSON.stringify(users));
+}
+
+/*
+  store all beverages in localStorage.
+*/
+function setBeverages(beverages) {
+  setItem('beverages', JSON.stringify(beverages));
+}
+
+/*
+  get an item from localStorage by key
+*/
+function getItem(key) {
+  let item = localStorage.getItem(key);
+  return !item ? null : JSON.parse(item);
+}
+
+/*
+  get all users from localStorage
+*/
+function getUsers() {
+  return getItem('users');
+}
+
+/*
+  get all beverages from localStorage
+*/
+function getBeverages() {
+  return getItem('beverages');
+}
+
+/*
+  get a users information by username
+*/
+function getUserFromUsername(username) {
+  let users = getUsers();
+  if(users === null) return null;
+  return users.find(u => u.username === username);
+}
+
+/*
+  get a users information by id
+*/
+function getUserFromId(id) {
+  let users = getUsers();
+  if(users === null) return null;
+  return users.find(u => u.user_id === id);
+}

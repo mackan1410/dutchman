@@ -6,25 +6,31 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Log in</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/login.css">
+  <link rel="stylesheet" href="styles/navbar.css"/>
 </head>
 
 <body>
 
+  <div id="navbar-container"></div>
+
   <div class="form-container hidden">
     <h1>Login</h1>
     <form id="login-form">
-      <input type="text" id="username" name="username" value="" placeholder="Username..."><br><br>
+      <input type="text" id="username" name="username" value="" placeholder="Username..."><!--br><br-->
       <input type="text" id="password" name="password" value="" placeholder="Password..."><br>
       <p class="error-message hidden">Wrong username or password. Try again.</p>
       <input type="submit" value="Login" />
     </form>
   </div>
 
+  <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="scripts/ModelFunctions.js"></script>
   <script type="text/javascript" src="scripts/cookies.js"></script>
   <script type="text/javascript" src="scripts/login.js"></script>
+  <script type="text/javascript" src="scripts/navbar.js"></script>
   <script>
 
   window.onload = function() {
@@ -32,10 +38,13 @@
     // TODO: redirect user to another page
     if(loggedIn()) {
       console.log('Logged in!');
+      window.location.replace('./');
       return null;
     }
 
-    DB.loadUsers().then(function() {
+    initData(function() {
+      navbar($('#navbar-container'), 'login');
+
       // Handle a failed login
       if(loginError()) {
         document.querySelector('.error-message').classList.remove('hidden'); //display error message
@@ -48,7 +57,7 @@
         login(username, password);
       });
 
-    });
+    })
   }
   </script>
 

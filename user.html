@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>User</title>
+
+	<link rel ="stylesheet", href="fontawesome/css/all.css" />
+	<link rel="stylesheet" href="styles/main.css"/>
+	<link rel="stylesheet" href="styles/navbar.css"/>
+
+</head>
+
+<body>
+
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="scripts/ModelFunctions.js"></script>
+  <script type="text/javascript" src="scripts/cookies.js"></script>
+  <script type="text/javascript" src="scripts/login.js"></script>
+	<script type="text/javascript" src="scripts/navbar.js"></script>
+	<script>
+		window.onload = function() {
+
+      if(!loggedIn()) {
+        window.location.replace('./');
+        return null;
+      }
+
+			DB.loadAll(function() {
+				navbar($('body'));
+			});
+		}
+
+	</script>
+</body>
+</html>

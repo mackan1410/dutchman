@@ -50,7 +50,7 @@ function Data() {
       loadJSON(function(response){
         self.users = JSON.parse(response);
         resolve();
-      }, '/thedutchman/DBFilesJSON/dutchman_table_users.json');
+      }, 'DBFilesJSON/dutchman_table_users.json');
     });
   };
 
@@ -60,7 +60,7 @@ function Data() {
       loadJSON(function(response){
         self.beverages = JSON.parse(response);
         resolve();
-      }, '/thedutchman/DBFilesJSON/dutchman_table_sbl_beer.json');
+      }, 'DBFilesJSON/dutchman_table_sbl_beer.json');
     });
   }
 

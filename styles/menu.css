@@ -1,0 +1,53 @@
+
+h1 {
+  width: 100%;
+  color: white;
+  padding: 1%;
+  text-align: center;
+  background-color: #1D2731;
+  margin-top: 0;
+}
+#res {
+  margin-left: 45%;
+  text-align: left;
+}
+
+#beerRes {
+  margin-left: 45%;
+  text-align: left;
+}
+
+#wineRes {
+  margin-left: 45%;
+  text-align: left;
+}
+
+#drinks {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 25%;
+    background-color: lightgrey;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  
+  li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  li a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  li a:hover {
+    background-color: #555;
+    color: white;
+  }
+
+

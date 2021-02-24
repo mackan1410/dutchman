@@ -1,0 +1,214 @@
+
+body {
+    background: cornflowerblue;
+}
+
+#pubname{
+    color: black;
+}
+
+ul, li {
+    margin: 5px;
+    padding: 0;
+}
+
+.menuButton{
+    position: relative;
+    left: 1400px;
+}
+#b1{
+    position:absolute;
+
+    top: 600px;
+}
+#b2{
+    position: absolute;
+    top: 630px;
+}
+#b3{
+    position: absolute;
+    top: 660px;
+}
+#b4{
+    position: absolute;
+    top: 690px;
+}
+#b5{
+    position: absolute;
+    top: 720px;
+}
+#b6{
+    position: absolute;
+    top: 750px;
+}
+#b7{
+    position: absolute;
+    top: 780px;
+}
+#b8{
+    position: absolute;
+    top: 810px;
+}
+
+
+.table{
+    position: relative;
+    border: black solid 2px;
+    border-radius: 100px;
+    background: lavender;
+}
+
+
+.tname{
+    position: absolute;
+    top: 40px;
+    right: 80px;
+}
+.sum {
+    position: absolute;
+    top: 100px;
+    right: 100px;
+}
+.tbill{
+    position: relative;
+    border: black solid 2px;
+    border-radius: 10px;
+    background: gainsboro;
+    left: 150px;
+    top: 50px;
+    height:200px;
+    width: 140px;
+
+}
+
+#payButton{
+    position: absolute;
+    left: 1500px;
+    top: 700px;
+}
+/*
+#tbo{
+    position: absolute;
+    height: 200px;
+}
+*/
+
+#tb1{
+    position: absolute;
+    height:200px;
+}
+#tb2{
+    position: absolute;
+    height:200px;
+}
+#tb3{
+    position: absolute;
+    z-index: 2;
+    height:200px;
+}
+#tb4{
+    position: absolute;
+    z-index: 2;
+    height:200px;
+
+}
+#tb5{
+    position: absolute;
+
+    z-index: 2;
+    height:200px;
+
+}
+#tb6{
+    position: absolute;
+    z-index: 2;
+    height:200px;
+
+}
+#tb7{
+    position: absolute;
+    z-index: 2;
+    height:200px;
+
+}
+#tb8{
+    position: absolute;
+    z-index: 2;
+    height:200px;
+
+}
+
+#t0{
+    position: absolute;
+    top: 200px;
+    left: 1400px;
+    height:200px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+
+#t1{
+    position: absolute;
+    top: 200px;
+    right: 600px;
+    height:200px;
+    width: 200px;
+
+}
+#t2{
+    position: absolute;
+    top: 500px;
+    right: 600px;
+    height:200px;
+    width: 200px;
+
+}
+#t3{
+    position: absolute;
+    top: 200px;
+    right: 900px;
+    height:200px;
+    width: 200px;
+
+}
+#t4{
+    position: absolute;
+    top: 500px;
+    right: 900px;
+    height:200px;
+    width: 200px;
+
+}
+#t5{
+    position: absolute;
+    top: 200px;
+    right: 1200px;
+    height:200px;
+    width: 200px;
+
+}
+#t6{
+    position: absolute;
+    top: 500px;
+    right: 1200px;
+    height:200px;
+    width: 200px;
+
+}
+#t7{
+    position: absolute;
+    top: 200px;
+    right: 1500px;
+    height:200px;
+    width: 200px;
+}
+#t8{
+    position: absolute;
+    top: 500px;
+    right: 1500px;
+    height:200px;
+    width: 200px;
+
+}
+

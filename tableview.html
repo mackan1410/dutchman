@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <title>The flying dutchman</title>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scripts/ModelFunctions.js"></script>
+    <script type="text/javascript" src="scripts/Tables.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/tablestyles.css">
+
+</head>
+
+<div id = "pubname">
+    The Flying Dutchman
+</div>
+
+<button type="button" id = "payButton" onclick="pay_bill()">Pay</button>
+
+<div id = "menuTest">
+    <button type="button" class = "menuButton" id = "b1" onclick="addItemToBill('1')">Add item 1</button>
+    <button type="button" class = "menuButton" id = "b2" onclick="addItemToBill('2')">Add item 2</button>
+    <button type="button" class = "menuButton" id = "b3" onclick="addItemToBill('3')">Add item 3</button>
+    <button type="button" class = "menuButton" id = "b4" onclick="addItemToBill('4')">Add item 4</button>
+    <button type="button" class = "menuButton" id = "b5" onclick="addItemToBill('5')">Add item 5</button>
+    <button type="button" class = "menuButton" id = "b6" onclick="addItemToBill('6')">Add item 6</button>
+    <button type="button" class = "menuButton" id = "b7" onclick="addItemToBill('7')">Add item 7</button>
+    <button type="button" class = "menuButton" id = "b8" onclick="addItemToBill('8')">Add item 8</button>
+
+
+</div>
+<!--
+<div class = "table" id = "t0" onclick = "selectTable('t0')">
+    <span class = "tname">
+        bar-table:
+
+    </span>
+    <div class = "tbill" id = "tb0">
+        <ul class = "list1" style="list-style-type:none" id = "li0"></ul>
+    </div>
+
+
+    <span class = "sum" id = sb1>
+        0kr.
+    </span>
+</div>
+<-->
+<div class = "table" id = t1 onclick = "selectTable('t1')">
+    <span class = "tname">
+        Table 1:
+
+    </span>
+    <div class = "tbill" id = tb1>
+        <ul class = "list1" style="list-style-type:none" id = "li1"></ul>
+    </div>
+
+
+    <span class = "sum" id = s1>
+        0kr.
+    </span>
+</div>
+<div class = "table" id = t2 onclick="selectTable('t2')">
+    <span class = "tname">
+        Table 2:
+    </span>
+    <div class = "tbill" id = tb2>
+        <ul class = "list1" style="list-style-type:none" id = "li2"></ul>
+    </div>
+
+    <span class = "sum" id = s2>
+        0kr.
+    </span>
+</div>
+<div class = "table" id = t3 onclick="selectTable('t3')">
+    <span class = "tname">
+        Table 3:
+    </span>
+    <div class = "tbill" id = tb3>
+        <ul class = "list1" style="list-style-type:none"  id = "li3"></ul>
+    </div>
+    <span class = "sum" id = s3>
+        0kr.
+    </span>
+</div>
+<div class = "table" id = t4 onclick="selectTable('t4')">
+    <span class = "tname">
+        Table 4:
+    </span>
+    <div class = "tbill" id = tb4>
+        <ul class = "list1" style="list-style-type:none"  id = "li4" ></ul>
+    </div>
+    <span class = "sum" id = s4>
+        0kr.
+    </span>
+</div>
+<div class = "table" id = t5 onclick="selectTable('t5')">
+    <span class = "tname">
+        Table 5:
+    </span>
+    <div class = "tbill" id = tb5>
+        <ul class = "list1" style="list-style-type:none"  id = "li5"></ul>
+    </div>
+    <span class = "sum" id = s5>
+        0kr.
+    </span>
+</div>
+<div class = "table" id = t6 onclick="selectTable('t6')">
+    <span class = "tname">
+        Table 6:
+    </span>
+    <div class = "tbill" id = tb6>
+        <ul class = "list1" style="list-style-type:none"  id = "li6"></ul>
+    </div>
+    <span class = "sum" id = s6>
+        0kr.
+    </span>
+</div>
+<div class = "table" id = t7 onclick="selectTable('t7')">
+    <span class = "tname">
+        Table 7:
+    </span>
+    <div class = "tbill" id = tb7>
+        <ul class = "list1" style="list-style-type:none"  id = "li7"></ul>
+    </div>
+    <span class = "sum" id = s7>
+        0kr.
+    </span>
+</div>
+<div class = "table" id = t8 onclick="selectTable('t8')">
+    <span class = "tname">
+        Table 8:
+    </span>
+    <div class = "tbill" id = tb8>
+        <ul class = "list1" style="list-style-type:none"  id = "li8"></ul>
+    </div>
+    <span class = "sum" id = s8>
+        0kr.
+    </span>
+</div>
+
+<body>
+ 
+</body>
+</html>
+
+<!-- =========================================================================
+END OF FILE
+========================================================================== -->

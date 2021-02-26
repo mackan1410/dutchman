@@ -22,7 +22,7 @@ function displayShoppingCart(container) {
         'en': 'Your order is empty'
       },
       'currency': {
-        'sv': 'sek',
+        'sv': 'kr',
         'en': '$'
       }
   }

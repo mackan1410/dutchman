@@ -17,8 +17,8 @@ function displayLoginForm(container) {
       'en': 'Username...',
     },
     'passwordFieldText': {
-      'sv': 'Lösenord',
-      'en': 'Password'
+      'sv': 'Lösenord...',
+      'en': 'Password...'
     },
     'submitBtnText': {
       'sv': 'Logga in',

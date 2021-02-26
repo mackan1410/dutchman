@@ -76,6 +76,7 @@ var DB = new Data(); // create a data object so that data can be loaded from the
   loads all data and stores it in localStorage if the data is not already present in localStorage.
 */
 function initData(callback) {
+  initLanguage(); // set the system language if not set
   DB.loadAll(function() {
     if(getUsers() === null){
       setUsers(DB.users);
@@ -87,6 +88,16 @@ function initData(callback) {
     }
     if(callback) callback();
   });
+}
+
+function initLanguage() {
+  if(getLanguage()) return;
+  setItem('language', 'sv');
+}
+
+function getLanguage() {
+  let lang = localStorage.getItem('language');
+  return !lang ? null : lang;
 }
 
 /*
@@ -133,13 +144,6 @@ function getUsers() {
 }
 
 /*
-  get all beverages from localStorage
-*/
-function getBeverages() {
-  return getItem('beverages');
-}
-
-/*
   get a users information by username
 */
 function getUserFromUsername(username) {
@@ -155,4 +159,16 @@ function getUserFromId(id) {
   let users = getUsers();
   if(users === null) return null;
   return users.find(u => u.user_id === id);
+}
+
+/*
+  get all beverages from localStorage
+*/
+function getBeverages() {
+  return getItem('beverages');
+}
+function getBeverageFromArticleId(articleId) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  return beverages.find(b => b.artikelid === articleId);
 }

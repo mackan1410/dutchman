@@ -8,17 +8,23 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 	<link rel="stylesheet" href="styles/main.css"/>
 	<link rel="stylesheet" href="styles/navbar.css"/>
+	<link rel="stylesheet" href="styles/cart.css"/>
 
 </head>
 
 <body>
 
+	<div id="navbar-container"></div>
+
 	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="scripts/ModelFunctions.js"></script>
   <script type="text/javascript" src="scripts/cookies.js"></script>
+	<script type="text/javascript" src="scripts/shoppingCartFuncs.js"></script>
   <script type="text/javascript" src="scripts/login.js"></script>
 	<script type="text/javascript" src="scripts/navbar.js"></script>
-	<script>
+	<script type="text/javascript" src="scripts/cart.js"></script>
+
+	<script type="text/javascript">
 		window.onload = function() {
 
       if(!loggedIn()) {
@@ -27,8 +33,9 @@
       }
 
 			initData(function(){
-				navbar($('body'), 'cart');
-			})
+				navbar($('#navbar-container'), 'cart');
+				displayShoppingCart($('#item-list'));
+			});
 		}
 
 	</script>

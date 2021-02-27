@@ -68,7 +68,8 @@ function login(username, password) {
   Logs out the currently logged in user.
 */
 function logout() {
-  setCookie('shoppingCart', null, 0);
+  setCookie('shoppingCart', null, 0); // remove the shopping cart
+  setCookie('cartUndoRedo', null, 0); // remove the undo and redo stack for the cart
   setCookie('user', null, 0); // set expiry time to 0 in order to remove cookie
 }
 

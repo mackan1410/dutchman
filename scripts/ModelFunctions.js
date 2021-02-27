@@ -72,33 +72,6 @@ var DB = new Data(); // create a data object so that data can be loaded from the
 /*
   The below functions are used for storing/loading from localStorage
 */
-/*
-  loads all data and stores it in localStorage if the data is not already present in localStorage.
-*/
-function initData(callback) {
-  initLanguage(); // set the system language if not set
-  DB.loadAll(function() {
-    if(getUsers() === null){
-      setUsers(DB.users);
-      console.log('storing users in localStorage');
-    }
-    if(getBeverages() === null){
-      setBeverages(DB.beverages);
-      console.log('Storing beverages in localstorage');
-    }
-    if(callback) callback();
-  });
-}
-
-function initLanguage() {
-  if(getLanguage()) return;
-  setItem('language', 'sv');
-}
-
-function getLanguage() {
-  let lang = localStorage.getItem('language');
-  return !lang ? null : lang;
-}
 
 /*
   remove an item from localStorage by key
@@ -115,25 +88,61 @@ function setItem(key, value) {
 }
 
 /*
-  store all users in localStorage.
-*/
-function setUsers(users) {
-  setItem('users', JSON.stringify(users));
-}
-
-/*
-  store all beverages in localStorage.
-*/
-function setBeverages(beverages) {
-  setItem('beverages', JSON.stringify(beverages));
-}
-
-/*
   get an item from localStorage by key
 */
 function getItem(key) {
   let item = localStorage.getItem(key);
   return !item ? null : JSON.parse(item);
+}
+
+/*
+  loads all data and stores it in localStorage if the data is not already present in localStorage.
+*/
+function initData(callback) {
+  initLanguage(); // set the system language if not set
+  DB.loadAll(function() {
+    if(getUsers() === null){
+      setUsers(DB.users);
+      console.log('storing users in localStorage');
+    }
+    if(getBeverages() === null){
+      setBeverages(DB.beverages);
+      console.log('Storing beverages in localstorage');
+    }
+    if(getOrders() === null){
+      setOrders([]);
+    }
+    if(callback) callback();
+  });
+}
+
+
+/*
+  Language functions below
+*/
+
+
+function initLanguage() {
+  if(getLanguage()) return;
+  setItem('language', 'sv');
+}
+
+function getLanguage() {
+  let lang = localStorage.getItem('language');
+  return !lang ? null : lang;
+}
+
+
+/*
+  User functions
+*/
+
+
+/*
+  store all users in localStorage.
+*/
+function setUsers(users) {
+  setItem('users', JSON.stringify(users));
 }
 
 /*
@@ -161,14 +170,55 @@ function getUserFromId(id) {
   return users.find(u => u.user_id === id);
 }
 
+
+/*
+  Beverage functions
+*/
+
+
+/*
+  store all beverages in localStorage.
+*/
+function setBeverages(beverages) {
+  setItem('beverages', JSON.stringify(beverages));
+}
+
 /*
   get all beverages from localStorage
 */
 function getBeverages() {
   return getItem('beverages');
 }
+
 function getBeverageFromArticleId(articleId) {
   let beverages = getBeverages();
   if(beverages === null) return null;
   return beverages.find(b => b.artikelid === articleId);
+}
+
+
+/*
+  Order functions
+*/
+
+
+function getOrders() {
+  return getItem('orders');
+}
+
+function getOrdersByUserId(id) {
+  let orders = getOrders();
+  if(orders === null) return [];
+
+  return orders.filter(o => o.id == id);
+}
+
+function setOrders(orders) {
+  setItem('orders', JSON.stringify(orders));
+}
+
+function addOrder(order) {
+  let orders = getOrders();
+  orders.push(order);
+  setOrders(orders);
 }

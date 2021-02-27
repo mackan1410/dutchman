@@ -24,11 +24,22 @@ function displayShoppingCart(container) {
       'currency': {
         'sv': 'kr',
         'en': '$'
+      },
+      'undoBtnText': {
+        'sv': 'Ångra?',
+        'en': 'Undo?'
+      },
+      'redoBtnText': {
+        'sv': 'Gör om?',
+        'en': 'Redo?'
       }
   }
 
   $('body').append($.parseHTML(`
     <div class="shopping-cart">
+      <span id="undo-btn" class="hidden" onclick="undoShoppingCart()">${dict.undoBtnText[lang]}</span>
+      <span id="redo-btn" class="hidden" onclick="redoShoppingCart()">${dict.redoBtnText[lang]}</span>
+      <br>
   		<div class="categories">
   			<div class="name item-property">${dict.itemCategoryHeader[lang]}</div>
   			<div class="price item-property">${dict.priceCategoryHeader[lang]}</div>
@@ -37,14 +48,15 @@ function displayShoppingCart(container) {
   		</div>
   		<div class="checkout-section">
           <div>${dict.totalPrice[lang]}: <span id="total-price">0</span> ${dict.currency[lang]}</div><br>
-  	      <input type="button" value="${dict.btnText[lang]}" />
+  	      <input type="button" value="${dict.btnText[lang]}" onclick="checkoutShoppingCart()"/>
   		</div>
   	</div>`))
 
+  displayUndoRedoBtns();
 
   let cart = getShoppingCart();
   if(!cart || !cart.items.length){
-    container.append($.parseHTML(`<div>${dict.cartEmptyMessage[lang]}</div>`));
+    $('#item-list').append($.parseHTML(`<div>${dict.cartEmptyMessage[lang]}</div>`));
     return;
   }
 
@@ -61,13 +73,43 @@ function displayShoppingCart(container) {
   document.getElementById('total-price').innerHTML = getShoppingCartCost();
 }
 
+function displayUndoRedoBtns() {
+  let cookie = getCookie('cartUndoRedo');
+  if(!cookie) return;
+  let savedUndoRedo = JSON.parse(cookie);
+  if(savedUndoRedo.undoStack.length) document.getElementById('undo-btn').classList.remove('hidden');
+  if(savedUndoRedo.redoStack.length) document.getElementById('redo-btn').classList.remove('hidden');
+}
 
 function remove(el) {
   removeFromShoppingCart(el.getAttribute('data-articleId'));
   el.parentElement.classList.add('hidden');
   document.getElementById('total-price').innerHTML = getShoppingCartCost();
+
+  displayUndoRedoBtns();
 }
 
+function undoShoppingCart() {
+  let cart = getShoppingCart();
+  let savedUndoRedo = JSON.parse(getCookie('cartUndoRedo'));
+  let undoRedo = new undoRedoManager(savedUndoRedo.undoStack, savedUndoRedo.redoStack);
+  undoRedo.undo(cart, function(prev) {
+    setCookie('shoppingCart', JSON.stringify(prev));
+    window.location.reload();
+  });
+  setCookie('cartUndoRedo', JSON.stringify(undoRedo));
+}
+
+function redoShoppingCart() {
+  let cart = getShoppingCart();
+  let savedUndoRedo = JSON.parse(getCookie('cartUndoRedo'));
+  let undoRedo = new undoRedoManager(savedUndoRedo.undoStack, savedUndoRedo.redoStack);
+  undoRedo.redo(cart, function(prev) {
+    setCookie('shoppingCart', JSON.stringify(prev));
+    window.location.reload();
+  });
+  setCookie('cartUndoRedo', JSON.stringify(undoRedo));
+}
 
 /*
   returns the shopping cart object
@@ -101,6 +143,12 @@ function removeFromShoppingCart(articleId) {
   let cart = getShoppingCart(); // get the shopping cart object
   if(cart === null || cart.items.length === 0) return; // if the cart does not exist or is empty, we can't remove from it
 
+  // push to the undo queue
+  let savedUndoRedo = JSON.parse(getCookie('cartUndoRedo'));
+  let undoRedo = new undoRedoManager(savedUndoRedo.undoStack, savedUndoRedo.redoStack);
+  undoRedo.pushUndo(cart);
+  setCookie('cartUndoRedo', JSON.stringify(undoRedo));
+
   let firstIdx = cart.items.findIndex(itm => itm == articleId);
   cart.items.splice(firstIdx,1);
   let beverage = getBeverageFromArticleId(articleId);
@@ -118,6 +166,9 @@ function createShoppingCart() {
     'cost': 0
   };
   setCookie('shoppingCart', JSON.stringify(cart));
+
+  let undoRedo = new undoRedoManager();
+  setCookie('cartUndoRedo', JSON.stringify(undoRedo));
 }
 
 /*
@@ -125,6 +176,7 @@ function createShoppingCart() {
 */
 function destroyShoppingCart() {
   setCookie('shoppingCart', null, 0); // destroys the shopping cart
+  setCookie('cartUndoRedo', null, 0);
 }
 
 /*
@@ -141,4 +193,15 @@ function getShoppingCartCost() {
 function checkoutShoppingCart() {
   // Store the order in an order table in localStorage
   // Delete the shopping cart
+  let cart = getShoppingCart();
+  if(cart === null || !cart.items.length) return null;
+
+  let userId = getUserId();
+  let order = {
+    'user': userId,
+    'order': cart
+  };
+
+  addOrder(order);
+  destroyShoppingCart();
 }

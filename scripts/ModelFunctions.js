@@ -121,15 +121,27 @@ function initData(callback) {
   Language functions below
 */
 
-
+/*
+  Initializes language to swedish
+*/
 function initLanguage() {
   if(getLanguage()) return;
   setItem('language', 'sv');
 }
 
+/*
+  Get the current language
+*/
 function getLanguage() {
   let lang = localStorage.getItem('language');
   return !lang ? null : lang;
+}
+
+/*
+  Set the language
+*/
+function setLanguage(lang) {
+  setItem('language', lang);
 }
 
 
@@ -190,6 +202,9 @@ function getBeverages() {
   return getItem('beverages');
 }
 
+/*
+  get a beverages information from it's article id
+*/
 function getBeverageFromArticleId(articleId) {
   let beverages = getBeverages();
   if(beverages === null) return null;
@@ -201,22 +216,33 @@ function getBeverageFromArticleId(articleId) {
   Order functions
 */
 
-
+/*
+  Get all orders in the system
+*/
 function getOrders() {
   return getItem('orders');
 }
 
+/*
+  Get all orders for a particular user
+*/
 function getOrdersByUserId(id) {
   let orders = getOrders();
   if(orders === null) return [];
 
-  return orders.filter(o => o.id == id);
+  return orders.filter(o => o.id != id);
 }
 
+/*
+  Update the order table in localStorage
+*/
 function setOrders(orders) {
   setItem('orders', JSON.stringify(orders));
 }
 
+/*
+  Add a new order to the order table
+*/
 function addOrder(order) {
   let orders = getOrders();
   orders.push(order);

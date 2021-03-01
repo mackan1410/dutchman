@@ -1,3 +1,10 @@
+/*
+  Shopping cart functions for UI and logic
+
+  Author: Markus Hellgren
+*/
+
+
 function displayShoppingCart(container) {
   const lang = getLanguage();
   const dict = {
@@ -30,24 +37,36 @@ function displayShoppingCart(container) {
         'en': 'Undo?'
       },
       'redoBtnText': {
-        'sv': 'Gör om?',
+        'sv': 'Ta tillbaka?',
         'en': 'Redo?'
+      },
+      'selectTablePrompt': {
+        'sv': 'Välj ditt bord',
+        'en': 'Select your table'
       }
   }
 
   $('body').append($.parseHTML(`
     <div class="shopping-cart">
-      <span id="undo-btn" class="hidden" onclick="undoShoppingCart()">${dict.undoBtnText[lang]}</span>
-      <span id="redo-btn" class="hidden" onclick="redoShoppingCart()">${dict.redoBtnText[lang]}</span>
-      <br>
+      <div id="undo-btn" class="hidden shopping-cart-extra" onclick="undoShoppingCart()">${dict.undoBtnText[lang]}</div>
+      <div id="redo-btn" class="hidden shopping-cart-extra" onclick="redoShoppingCart()">${dict.redoBtnText[lang]}</div>
   		<div class="categories">
   			<div class="name item-property">${dict.itemCategoryHeader[lang]}</div>
   			<div class="price item-property">${dict.priceCategoryHeader[lang]}</div>
   		</div>
-  		<div id="item-list">
+  		<div id="item-list" class="shopping-cart-item-list">
   		</div>
   		<div class="checkout-section">
           <div>${dict.totalPrice[lang]}: <span id="total-price">0</span> ${dict.currency[lang]}</div><br>
+          <label for="tables">${dict.selectTablePrompt[lang]}:</label>
+          <select name="tables" id="table-selector">
+            <option value="" selected="selected"></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+          <br>
   	      <input type="button" value="${dict.btnText[lang]}" onclick="checkoutShoppingCart()"/>
   		</div>
   	</div>`))
@@ -56,7 +75,7 @@ function displayShoppingCart(container) {
 
   let cart = getShoppingCart();
   if(!cart || !cart.items.length){
-    $('#item-list').append($.parseHTML(`<div>${dict.cartEmptyMessage[lang]}</div>`));
+    $('#item-list').append($.parseHTML(`<div class="shopping-cart-extra">${dict.cartEmptyMessage[lang]}</div>`));
     return;
   }
 
@@ -66,13 +85,17 @@ function displayShoppingCart(container) {
     $('#item-list').append($.parseHTML(`
       <div class="shopping-cart-item">
           <div class="name item-property">${beverage.namn}</div>
-          <div class="price item-property">${beverage.prisinklmoms}</div>
-          <div class="remove-btn item-property" data-articleId="${item}" onclick="remove(this)"><i class="fas fa-trash"></i></div>
+          <div class="price item-property">${beverage.prisinklmoms + dict.currency[lang]}</div>
+          <div class="remove-btn item-property" data-articleId="${item}" onclick="remove(this)"><i class="fas fa-trash trashcan-cart"></i></div>
       </div>`));
   })
   document.getElementById('total-price').innerHTML = getShoppingCartCost();
 }
 
+
+/*
+  Display the buttons for undo/redo
+*/
 function displayUndoRedoBtns() {
   let cookie = getCookie('cartUndoRedo');
   if(!cookie) return;
@@ -81,6 +104,9 @@ function displayUndoRedoBtns() {
   if(savedUndoRedo.redoStack.length) document.getElementById('redo-btn').classList.remove('hidden');
 }
 
+/*
+  Handle remove of an item in the shopping cart
+*/
 function remove(el) {
   removeFromShoppingCart(el.getAttribute('data-articleId'));
   el.parentElement.classList.add('hidden');
@@ -89,6 +115,9 @@ function remove(el) {
   displayUndoRedoBtns();
 }
 
+/*
+  Handle a click on the undo button
+*/
 function undoShoppingCart() {
   let cart = getShoppingCart();
   let savedUndoRedo = JSON.parse(getCookie('cartUndoRedo'));
@@ -100,6 +129,9 @@ function undoShoppingCart() {
   setCookie('cartUndoRedo', JSON.stringify(undoRedo));
 }
 
+/*
+  Handle a click on the redo button
+*/
 function redoShoppingCart() {
   let cart = getShoppingCart();
   let savedUndoRedo = JSON.parse(getCookie('cartUndoRedo'));
@@ -128,6 +160,11 @@ function addToShoppingCart(articleId) {
   if(cart === null){ // if the cart does not exist, create one
     createShoppingCart();
   }
+
+  let savedUndoRedo = JSON.parse(getCookie('cartUndoRedo'));
+  let undoRedo = new undoRedoManager(savedUndoRedo.undoStack, savedUndoRedo.redoStack);
+  undoRedo.pushUndo(cart);
+  setCookie('cartUndoRedo', JSON.stringify(undoRedo));
 
   cart = getShoppingCart();
   cart.items.push(articleId);  // add the new item to the existing cart
@@ -172,14 +209,6 @@ function createShoppingCart() {
 }
 
 /*
-  Completely removes the shopping cart
-*/
-function destroyShoppingCart() {
-  setCookie('shoppingCart', null, 0); // destroys the shopping cart
-  setCookie('cartUndoRedo', null, 0);
-}
-
-/*
   returns the total cost of the shopping cart
 */
 function getShoppingCartCost() {
@@ -196,12 +225,21 @@ function checkoutShoppingCart() {
   let cart = getShoppingCart();
   if(cart === null || !cart.items.length) return null;
 
+  let table = document.getElementById('table-selector').value;
+  if(!table) return null;
+
   let userId = getUserId();
   let order = {
     'user': userId,
+    'table': table,
     'order': cart
   };
 
+  //TODO: make sure the shopping cart cost is removed from the users account
+
+
   addOrder(order);
-  destroyShoppingCart();
+  setCookie('shoppingCart', null, 0);
+  setCookie('cartUndoRedo', null, 0);
+  window.location.reload();
 }

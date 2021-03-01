@@ -19,7 +19,7 @@ function setCookie(name, value, days) {
   Gets the value of a cookie.
 */
 function getCookie(name) {
-  let cookie = document.cookie.split(';').find(c => c.startsWith(name+'='));
+  let cookie =  document.cookie.split('; ').find(row => row.startsWith(name+'='));
   return cookie ? cookie.split('=')[1] : null;
 }
 
@@ -27,5 +27,5 @@ function getCookie(name) {
   Checks if a cookie is set.
 */
 function cookieIsSet(name) {
-  return document.cookie.split(';').some(c => c.startsWith(name+'='));
+  return document.cookie.split(';').some((item) => item.trim().startsWith(name+'='));
 }

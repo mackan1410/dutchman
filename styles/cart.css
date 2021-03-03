@@ -1,9 +1,26 @@
-.shopping-cart{width: 700px; min-height: 500px; margin: 100px auto;}
-.categories{height: 40px; background-color: #1D2731; color: white; line-height: 40px;}
-#item-list{width: 100%;}
-.checkout-section{width: 300px; float: right; padding-top: 20px; text-align: right;}
+/*
+  Styling for the shopping cart page
 
-input[type="button"]{
+  Author: Markus Hellgren
+*/
+
+.shopping-cart{width: 700px; min-height: 500px; margin: 50px auto;}
+.shopping-cart #undo-btn, #redo-btn{text-decoration: underline;}
+.shopping-cart #undo-btn:hover, #redo-btn:hover{cursor: pointer;}
+.shopping-cart-extra{ width: 100%; padding:10px; box-sizing: border-box; }
+
+.categories{height: 40px; background-color: #1D2731; color: white; line-height: 40px;}
+
+.shopping-cart-item-list{width: 100%;}
+.shopping-cart-item{width: 100%; height: 75px; border-bottom: 1px solid #857F74; line-height: 75px;}
+.item-property{display: inline-block; word-break: break-all; padding-left: 10px;}
+.name{width: 50%;}
+.price{width: 30%;}
+.trashcan-cart{color: red;}
+.trashcan-cart:hover{cursor: pointer;}
+
+.checkout-section{width: 300px; float: right; padding-top: 20px; text-align: right;}
+.shopping-cart input[type="button"]{
    -webkit-appearance: none;
    width:200px;
    padding: 12px 20px;
@@ -15,11 +32,8 @@ input[type="button"]{
    color:  #EEEFEB;
    background-color: #857F74;
 }
-input[type="button"]:hover{text-decoration: underline;}
-.shopping-cart-item{width: 100%; height: 75px; border-bottom: 1px solid #857F74; line-height: 75px;}
-.item-property{display: inline-block; word-break: break-all; padding-left: 10px;}
-.name{width: 50%;}
-.price{width: 30%;}
+.shopping-cart input[type="button"]:hover{text-decoration: underline;}
+
 
 @media only screen and (max-width: 1000px) {
   .shopping-cart{width: 95%;}

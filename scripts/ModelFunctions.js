@@ -211,6 +211,15 @@ function getBeverageFromArticleId(articleId) {
   return beverages.find(b => b.artikelid === articleId);
 }
 
+/*
+  removes a beverage with a particular article id
+*/
+function removeBeverageByArticleId(articleId) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  let afterRemoval = beverages.filter(b => b.artikelid !== articleId);
+  setBeverages(afterRemoval);
+}
 
 /*
   Order functions

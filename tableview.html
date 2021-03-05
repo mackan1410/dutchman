@@ -2,49 +2,51 @@
 <html lang="en">
  
 <head>
+
     <meta charset="UTF-8">
     <title>The flying dutchman</title>
     <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="scripts/ModelFunctions.js"></script>
     <script type="text/javascript" src="scripts/Tables.js"></script>
+    <script type="text/javascript" src="scripts/PaymentFunctions.js"></script>
+    <script type="text/javascript" src="scripts/OrderFunctions.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/tablestyles.css">
 
 </head>
+    <script>
+        /*callback function? */
+        initData(function(){
+        });
 
+        setItem('receipts',JSON.stringify([]));
+        printbills();
+
+
+    </script>
 <div id = "pubname">
     The Flying Dutchman
 </div>
 
 <button type="button" id = "payButton" onclick="pay_bill()">Pay</button>
-
+let order2 = {
+"table":"5",
+"user_id":"6",
+"artikel_id":"190719",
+"pris":"120",
+"quantity":"1"
+}
 <div id = "menuTest">
-    <button type="button" class = "menuButton" id = "b1" onclick="addItemToBill('1')">Add item 1</button>
-    <button type="button" class = "menuButton" id = "b2" onclick="addItemToBill('2')">Add item 2</button>
-    <button type="button" class = "menuButton" id = "b3" onclick="addItemToBill('3')">Add item 3</button>
-    <button type="button" class = "menuButton" id = "b4" onclick="addItemToBill('4')">Add item 4</button>
-    <button type="button" class = "menuButton" id = "b5" onclick="addItemToBill('5')">Add item 5</button>
-    <button type="button" class = "menuButton" id = "b6" onclick="addItemToBill('6')">Add item 6</button>
-    <button type="button" class = "menuButton" id = "b7" onclick="addItemToBill('7')">Add item 7</button>
-    <button type="button" class = "menuButton" id = "b8" onclick="addItemToBill('8')">Add item 8</button>
+    <button type="button" class = "menuButton" id = "b1" onclick="addItemToBill(1)">Add item 1</button>
+    <button type="button" class = "menuButton" id = "b2" onclick="addItemToBill(2)">Add item 2</button>
+    <button type="button" class = "menuButton" id = "b3" onclick="addItemToBill(3)">Add item 3</button>
+    <button type="button" class = "menuButton" id = "b4" onclick="addItemToBill(4)">Add item 4</button>
+    <button type="button" class = "menuButton" id = "b5" onclick="addItemToBill(5)">Add item 5</button>
+    <button type="button" class = "menuButton" id = "b6" onclick="addItemToBill(6)">Add item 6</button>
+    <button type="button" class = "menuButton" id = "b7" onclick="addItemToBill(7)">Add item 7</button>
+    <button type="button" class = "menuButton" id = "b8" onclick="addItemToBill(8)">Add item 8</button>
 
 
 </div>
-<!--
-<div class = "table" id = "t0" onclick = "selectTable('t0')">
-    <span class = "tname">
-        bar-table:
-
-    </span>
-    <div class = "tbill" id = "tb0">
-        <ul class = "list1" style="list-style-type:none" id = "li0"></ul>
-    </div>
-
-
-    <span class = "sum" id = sb1>
-        0kr.
-    </span>
-</div>
-<-->
 <div class = "table" id = t1 onclick = "selectTable('t1')">
     <span class = "tname">
         Table 1:
@@ -139,10 +141,60 @@
 </div>
 
 <body>
- 
 </body>
 </html>
 
 <!-- =========================================================================
 END OF FILE
-========================================================================== -->
+==========================================================================
+
+/* testing payments and orders
+let payment1 = {"transaction_id": "1",
+"user_id": "16",
+"admin_id": "2",
+"amount": "30",
+"timestamp": "2012-08-31 17:48:25"};
+let payment2 = {"transaction_id": "2",
+"user_id": "17",
+"admin_id": "2",
+"amount": "30",
+"timestamp": "2012-08-31 17:48:25"};
+let payment3 = {"transaction_id": "3",
+"user_id": "18",
+"admin_id": "2",
+"amount": "30",
+"timestamp": "2012-08-31 17:48:25"};
+let payment4 = {"transaction_id": "4",
+"user_id": "16",
+"admin_id": "2",
+"amount": "30",
+"timestamp": "2012-08-31 17:48:25"};
+let order1 = {
+"table":"1",
+"user_id":"2",
+"artikel_id":"25053",
+"pris":"123",
+"quantity":"3"
+}
+let order2 = {
+"table":"5",
+"user_id":"6",
+"artikel_id":"190719",
+"pris":"120",
+"quantity":"1"
+}
+let order3 = {
+"table":"5",
+"user_id":"123",
+"artikel_id":"7265",
+"pris":"120",
+"quantity":"1"
+}
+let order4 = {
+"table":"5",
+"user_id":"11",
+"artikel_id":"1965",
+"pris":"1250",
+"quantity":"1"
+}
+-->

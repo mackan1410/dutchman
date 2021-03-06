@@ -10,6 +10,42 @@ function createManagerView(beverages) {
       'sv': 'Lägg till ny dryck',
       'en': 'Add new beverage'
     },
+    'addNewNameFieldText': {
+      'sv': 'Namn',
+      'en': 'Name'
+    },
+    'addNewIdFieldText': {
+      'sv': 'Artikel ID',
+      'en': 'Article ID'
+    },
+    'addNewPriceFieldText': {
+      'sv': 'Pris',
+      'en': 'Price'
+    },
+    'addNewAbvFieldText': {
+      'sv': 'Volymprocent alkohol(vol)',
+      'en': 'Alcohol by volume(abv)'
+    },
+    'addNewAmountFieldText': {
+      'sv': 'Antal i lager',
+      'en': 'Number in stock'
+    },
+    'addNewTypeFieldText': {
+      'sv': 'Dryckeskategori',
+      'en': 'Beverage category'
+    },
+    'addNewBeerOptText': {
+      'sv': 'Öl',
+      'en': 'Beer'
+    },
+    'addNewWineOptText': {
+      'sv': 'Vin',
+      'en': 'Wine'
+    },
+    'addNewSpiritsOptText': {
+      'sv': 'Sprit',
+      'en': 'Spirits'
+    },
     'addNewBtnText': {
       'sv': 'Lägg till',
       'en': 'Add'
@@ -41,22 +77,22 @@ function createManagerView(beverages) {
       <!--input class="add-new-btn" type="button" value="${dict.addNewDropdownBtnText[lang]}" onclick="displayAddItemForm()"/-->
       <h3 class="add-new-dropdown-toggler" onclick="toggleAddItemForm()">${dict.addNewDropdownBtnText[lang]} <i class="fas fa-caret-down"></i></h3>
       <form class="new-item-form">
-        <label for="pname">Product name</label><br>
+        <label for="pname">${dict.addNewNameFieldText[lang]}</label><br>
         <input type="text" id="pname" name="pname"><br>
-        <label for="articleId">Article id</label><br>
+        <label for="articleId">${dict.addNewIdFieldText[lang]}</label><br>
         <input type="text" id="articleId" name="articleId">
-        <label for="price">Price</label><br>
+        <label for="price">${dict.addNewPriceFieldText[lang]}</label><br>
         <input type="text" id="price" name="price">
-        <label for="abv">alcohol by volume(abv)</label><br>
+        <label for="abv">${dict.addNewAbvFieldText[lang]}</label><br>
         <input type="text" id="abv" name="abv">
-        <label for="amount">Amount</label><br>
+        <label for="amount">${dict.addNewAmountFieldText[lang]}</label><br>
         <input type="text" id="amount" name="amount">
-        <label for="bevtypes">Beverage type</label><br>
+        <label for="bevtypes">${dict.addNewTypeFieldText[lang]}</label><br>
         <select name="bevtypes" id="bev-type-selector">
           <option value="" selected="selected"></option>
-          <option value="1">beer</option>
-          <option value="2">wine</option>
-          <option value="3">spirit</option>
+          <option value="1">${dict.addNewBeerOptText[lang]}</option>
+          <option value="2">${dict.addNewWineOptText[lang]}</option>
+          <option value="3">${dict.addNewSpiritsOptText[lang]}</option>
         </select>
         <input class="add-new-btn" type="button" value="${dict.addNewBtnText[lang]}" onclick="submitNewItem()"/>
       </form>
@@ -66,7 +102,6 @@ function createManagerView(beverages) {
         <div class="name-field item-property-field">${dict.nameFieldCategoryText[lang]}</div>
         <div class="item-property-btn item-property-field">${dict.removeBtnCategoryText[lang]}</div>
         <div class="item-property-btn item-property-field">${dict.editBtnCategoryText[lang]}</div>
-
       </div>
       <div id="item-list"></div>
     </div>
@@ -76,8 +111,17 @@ function createManagerView(beverages) {
       $('#item-list').append($.parseHTML(`
         <div class="item" data-articleId=${beverage.artikelid}>
           <div class="name-field item-property-field">${beverage.namn}(${beverage.artikelid})</div>
-          <div id="remove-btn" class="item-property-btn item-property-field" onclick="remove(this, this.parentElement.getAttribute('data-articleId'), '${dict.removeConfirmMessage[lang]}')"><i class="fas fa-trash trashcan"></i></div>
-          <div id="edit-btn" class="item-property-btn item-property-field" onclick="edit(this.parentElement.getAttribute('data-articleId'), '${dict.editConfirmMessage[lang]}')"><i class="fas fa-edit"></i></div>
+          <div id="remove-btn" class="remove-btn item-property-btn item-property-field" onclick="remove(this, this.parentElement.getAttribute('data-articleId'), '${dict.removeConfirmMessage[lang]}')"><i class="fas fa-trash trashcan"></i></div>
+          <div id="edit-btn" class=" edit-btn item-property-btn item-property-field" onclick="edit($(this), this.parentElement.getAttribute('data-articleId'), '${dict.editConfirmMessage[lang]}')"><i class="fas fa-edit"></i></div>
+          <div class="edit-dropdown">
+            <form>
+              <label for="bevPrice">Price</label><br>
+              <input type="text" name="bevPrice" value="${beverage.prisinklmoms}">
+              <label for="amount">Amount</label><br>
+              <input type="text" name="amount" value="${beverage.antal}">
+              <input class="add-new-btn" type="button" value="Update" onclick=""/>
+            </form>
+          </div>
         </div>
         `))
     })
@@ -122,10 +166,10 @@ function remove(el, articleId, confirmMessage) {
   el.parentElement.classList.add('hidden');
 }
 
-function edit(articleId, confirmMessage) {
+function edit(el, articleId, confirmMessage) {
   if(!articleId) return;
-  if(!confirm(confirmMessage)) return;
-
+  //el.parentElement.getElementsByClassName('edit-dropdown')[0].classList.toggle('hidden');
+  el.parent().find('.edit-dropdown').slideToggle(300);
   //display edit view
   //hide item view
 

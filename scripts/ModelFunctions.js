@@ -203,6 +203,15 @@ function getBeverages() {
 }
 
 /*
+  Checks if a beverage with a given article id already exists
+*/
+function beverageExists(articleId) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  return beverages.find(bev => bev.artikelid === articleId);
+}
+
+/*
   get a beverages information from it's article id
 */
 function getBeverageFromArticleId(articleId) {
@@ -219,6 +228,17 @@ function removeBeverageByArticleId(articleId) {
   if(beverages === null) return null;
   let afterRemoval = beverages.filter(b => b.artikelid !== articleId);
   setBeverages(afterRemoval);
+}
+
+/*
+  Add a new beverage to the beverage table in localStorage
+*/
+function addBeverage(beverage) {
+  if(!beverage) return;
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  beverages.push(beverage);
+  setBeverages(beverages);
 }
 
 /*

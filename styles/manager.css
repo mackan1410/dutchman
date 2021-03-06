@@ -1,9 +1,20 @@
-.content{width: 95%; min-height: 700px; margin: 50px auto 0; }
+.content{width: 700px; margin: 50px auto 0; }
+
+.add-new-dropdown-toggler:hover{cursor: pointer; text-decoration: underline;}
 .add-new-btn{-webkit-appearance: none; background-color: green; color: white; border-radius: 3px; border: none; margin-bottom: 10px; padding: 10px 20px 10px;}
 .add-new-btn:hover{opacity: 0.75; cursor: pointer;}
-.item{width: 100%; height: 50px; background-color: Gainsboro; line-height:50px;}
+
+.new-item-form{width: 100%; display: none;}
+input[type="text"], select{ width: 100%; margin-top: 5px; margin-bottom: 5px; border-radius: 3px; border: 1px solid #857F74; height: 35px; font-size: 15px; box-sizing:border-box}
+
+.categories{height: 40px; background-color: #1D2731; color: white; line-height: 40px;}
+.item{width: 100%; height: 50px; background-color: Gainsboro; border-bottom: 1px solid #857F74; line-height:50px;}
 .item-property-field{display: inline-block; padding-left: 10px;}
 .name-field{min-width: 15%;}
-.price-field{min-width: 15%;}
-.edit-btn{float: right; padding: 0 20px 0;}
-.remove-btn{float: right; padding: 0 20px 0;}
+.item-property-btn{float: right; min-width: 50px; margin-right: 10px; text-align: left;}
+
+@media only screen and (max-width: 1000px) {
+  .content{width: 95%;}
+  .catergories{font-size: 15px;}
+  .item-property-field{font-size: 15px;}
+}

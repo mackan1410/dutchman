@@ -22,7 +22,8 @@
     "modul": "",
     "sortiment": "FS",
     "ekologisk": "0",
-    "koscher": "0"
+    "koscher": "0",
+    "stock": 0
 }, {
     "nr": "1001",
     "artikelid": "190719",
@@ -47,7 +48,8 @@
     "modul": "",
     "sortiment": "FS",
     "ekologisk": "0",
-    "koscher": "0"
+    "koscher": "0",
+    "stock": 1
 }, {
     "nr": "1001201",
     "artikelid": "51029",
@@ -72,7 +74,8 @@
     "modul": "",
     "sortiment": "FS",
     "ekologisk": "0",
-    "koscher": "0"
+    "koscher": "0",
+    "stock": 0
 }, {
     "nr": "1001202",
     "artikelid": "407506",
@@ -97,7 +100,8 @@
     "modul": "",
     "sortiment": "FS",
     "ekologisk": "0",
-    "koscher": "0"
+    "koscher": "0",
+    "stock": 2
 }, {
     "nr": "1003802",
     "artikelid": "513291",
@@ -122,7 +126,8 @@
     "modul": "",
     "sortiment": "TSS",
     "ekologisk": "0",
-    "koscher": "0"
+    "koscher": "0",
+    "stock": 0
 }, {
     "nr": "1004703",
     "artikelid": "723841",
@@ -147,7 +152,8 @@
     "modul": "T5",
     "sortiment": "TSE",
     "ekologisk": "0",
-    "koscher": "0"
+    "koscher": "0",
+    "stock": 0
 }, {
     "nr": "1004801",
     "artikelid": "733051",
@@ -172,5 +178,6 @@
     "modul": "T7",
     "sortiment": "TSE",
     "ekologisk": "0",
-    "koscher": "0"
+    "koscher": "0",
+    "stock": 0
 }]

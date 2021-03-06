@@ -3,15 +3,24 @@ var printedWine = false;
 var printedBeer = false;
 
 function getBev() {
+    let b = getBeverages();
     var i;
     if (!printedSpirits) {
-        for(i = 0; i<DB2.spirits.length; i++){
-            document.getElementById("res").innerHTML = document.getElementById("res").innerHTML+ "<br>" + (i+1) + ". " + DB2.spirits[i].namn;
+        for(i = 0; i<b.length; i++){
+            //document.getElementById("res").innerHTML = document.getElementById("res").innerHTML+ "<br>" + (i+1) + ". " + b[i].namn + ", "+ b[i].stock;
+            $("#res").append('<li class="list"></li>').append(b[i].namn +", " + b[i].stock);
             printedSpirits = true;
         }
     } else {
         displaySpirits()
     } 
+}
+
+function list() {
+  let b = getBeverages();
+  let a = b[1].namn;
+  //$("#res").append(a);
+  $("#res").append('<li class="list"></li>').append(a);
 }
 
 function getWine() {

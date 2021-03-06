@@ -50,4 +50,14 @@ h1 {
     color: white;
   }
 
+button {
+  position: relative;
+  margin-left: 50%;
+
+}
+
+.list {
+  list-style-type: decimal;
+
+}
 

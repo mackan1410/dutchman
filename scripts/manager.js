@@ -1,5 +1,5 @@
 
-function createManagerView(beverages) {
+function createManagerView(container, beverages) {
   const lang = getLanguage();
   const dict = {
     'mainHeader': {
@@ -72,7 +72,7 @@ function createManagerView(beverages) {
     }
   }
 
-  $('body').append($.parseHTML(`
+  container.append($.parseHTML(`
     <div class="content">
       <!--input class="add-new-btn" type="button" value="${dict.addNewDropdownBtnText[lang]}" onclick="displayAddItemForm()"/-->
       <h3 class="add-new-dropdown-toggler" onclick="toggleAddItemForm()">${dict.addNewDropdownBtnText[lang]} <i class="fas fa-caret-down"></i></h3>
@@ -107,19 +107,20 @@ function createManagerView(beverages) {
     </div>
     `))
 
+
     beverages.forEach(beverage => {
       $('#item-list').append($.parseHTML(`
         <div class="item" data-articleId=${beverage.artikelid}>
           <div class="name-field item-property-field">${beverage.namn}(${beverage.artikelid})</div>
           <div id="remove-btn" class="remove-btn item-property-btn item-property-field" onclick="remove(this, this.parentElement.getAttribute('data-articleId'), '${dict.removeConfirmMessage[lang]}')"><i class="fas fa-trash trashcan"></i></div>
-          <div id="edit-btn" class=" edit-btn item-property-btn item-property-field" onclick="edit($(this), this.parentElement.getAttribute('data-articleId'), '${dict.editConfirmMessage[lang]}')"><i class="fas fa-edit"></i></div>
+          <div id="edit-btn" class=" edit-btn item-property-btn item-property-field" onclick="toggleEditDropdown($(this))"><i class="fas fa-edit"></i></div>
           <div class="edit-dropdown">
             <form>
               <label for="bevPrice">Price</label><br>
-              <input type="text" name="bevPrice" value="${beverage.prisinklmoms}">
+              <input type="text" class="peditfield" name="bevPrice" value="${beverage.prisinklmoms}" oninput="markAsChanged(this)">
               <label for="amount">Amount</label><br>
-              <input type="text" name="amount" value="${beverage.antal}">
-              <input class="add-new-btn" type="button" value="Update" onclick=""/>
+              <input type="text" class="aeditfield" name="amount" value="${beverage.antal}" oninput="markAsChanged(this)">
+              <input class="add-new-btn" type="button" value="Update" onclick="submitEditForm(this, this.parentElement.parentElement.parentElement.getAttribute('data-articleId'), '${dict.editConfirmMessage[lang]}')"/>
             </form>
           </div>
         </div>
@@ -152,9 +153,13 @@ function submitNewItem() {
   }
 
   addBeverage(newItem);
-  window.location.reload();
+  document.getElementById('content-container').innerHTML = '';
+  createManagerView($('#content-container'), getBeverages());
 }
 
+function toggleEditDropdown(el) {
+  el.parent().find('.edit-dropdown').slideToggle(300);
+}
 
 /*
   Called when remove button is clicked on an item
@@ -166,11 +171,28 @@ function remove(el, articleId, confirmMessage) {
   el.parentElement.classList.add('hidden');
 }
 
-function edit(el, articleId, confirmMessage) {
-  if(!articleId) return;
-  //el.parentElement.getElementsByClassName('edit-dropdown')[0].classList.toggle('hidden');
-  el.parent().find('.edit-dropdown').slideToggle(300);
-  //display edit view
-  //hide item view
+//"edit($(this), this.parentElement.parentElement.parentElement.getAttribute('data-articleId'), '${dict.editConfirmMessage[lang]}')"
 
+function markAsChanged(el) {
+  el.setAttribute('data-ischanged', true);
+}
+
+/*
+  Submit update of a beverage
+*/
+function submitEditForm(el, articleId, confirmMessage) {
+  if(!articleId) return;
+
+  let priceField = el.parentElement.getElementsByClassName('peditfield')[0];
+  let amountField = el.parentElement.getElementsByClassName('aeditfield')[0];
+  let beverage = getBeverageFromArticleId(articleId);
+
+  if(priceField.getAttribute('data-ischanged') == 'true' && priceField.value !== '')
+    beverage.prisinklmoms = priceField.value;
+  if(amountField.getAttribute('data-ischanged') == 'true' && amountField.value !== '')
+    beverage.antal = amountField.value;
+
+  changeBeverageByArticleId(articleId, beverage);
+  document.getElementById('content-container').innerHTML = '';
+  createManagerView($('#content-container'), getBeverages());
 }

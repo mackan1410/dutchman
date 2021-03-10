@@ -230,6 +230,12 @@ function removeBeverageByArticleId(articleId) {
   setBeverages(afterRemoval);
 }
 
+function changeBeverageByArticleId(articleId, newBeverage) {
+  let beverages = getBeverages();
+  let changed = beverages.map(b => b.artikelid === articleId ? newBeverage : b);
+  setBeverages(changed);
+}
+
 /*
   Add a new beverage to the beverage table in localStorage
 */
@@ -277,5 +283,3 @@ function addOrder(order) {
   orders.push(order);
   setOrders(orders);
 }
-
-

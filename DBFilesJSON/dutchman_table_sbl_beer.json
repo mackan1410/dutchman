@@ -23,7 +23,8 @@
     "sortiment": "FS",
     "ekologisk": "0",
     "koscher": "0",
-    "stock": 0
+    "stock": 0,
+    "dryckestyp": "3"
 }, {
     "nr": "1001",
     "artikelid": "190719",
@@ -49,7 +50,8 @@
     "sortiment": "FS",
     "ekologisk": "0",
     "koscher": "0",
-    "stock": 1
+    "stock": 1,
+    "dryckestyp": "3"
 }, {
     "nr": "1001201",
     "artikelid": "51029",
@@ -75,7 +77,8 @@
     "sortiment": "FS",
     "ekologisk": "0",
     "koscher": "0",
-    "stock": 0
+    "stock": 0,
+    "dryckestyp": "3"
 }, {
     "nr": "1001202",
     "artikelid": "407506",
@@ -101,7 +104,8 @@
     "sortiment": "FS",
     "ekologisk": "0",
     "koscher": "0",
-    "stock": 2
+    "stock": 2,
+    "dryckestyp": "3"
 }, {
     "nr": "1003802",
     "artikelid": "513291",
@@ -127,7 +131,8 @@
     "sortiment": "TSS",
     "ekologisk": "0",
     "koscher": "0",
-    "stock": 0
+    "stock": 0,
+    "dryckestyp": "3"
 }, {
     "nr": "1004703",
     "artikelid": "723841",
@@ -153,7 +158,8 @@
     "sortiment": "TSE",
     "ekologisk": "0",
     "koscher": "0",
-    "stock": 0
+    "stock": 0,
+    "dryckestyp": "1"
 }, {
     "nr": "1004801",
     "artikelid": "733051",
@@ -179,5 +185,6 @@
     "sortiment": "TSE",
     "ekologisk": "0",
     "koscher": "0",
-    "stock": 0
+    "stock": 0,
+    "dryckestyp": "3"
 }]

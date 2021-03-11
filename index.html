@@ -1,28 +1,34 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>The flying dutchman</title>
+	<title>Main view</title>
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
 	<link rel="stylesheet" href="styles/main.css"/>
 	<link rel="stylesheet" href="styles/navbar.css"/>
-
+  <link rel="stylesheet" href="styles/mainView.css"/>
 </head>
 
 <body>
+
+  <div id="navbar-container"></div>
+	<div id="content-container"></div>
 
 	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="scripts/ModelFunctions.js"></script>
   <script type="text/javascript" src="scripts/cookies.js"></script>
   <script type="text/javascript" src="scripts/login.js"></script>
+	<script type="text/javascript" src="scripts/undoRedo.js"></script>
+	<script type="text/javascript" src="scripts/cart.js"></script>
 	<script type="text/javascript" src="scripts/navbar.js"></script>
+  <script type="text/javascript" src="scripts/mainView.js"></script>
 	<script>
 		window.onload = function() {
-
 			initData(function() {
-				navbar($('body'));
+				navbar($('#navbar-container'), 'menu');
+        createMenuView($('#content-container'), getBeverages(), getLanguage(), true, true, true, '0', loggedIn());
 			})
 		}
 

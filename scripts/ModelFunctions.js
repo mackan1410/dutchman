@@ -230,6 +230,9 @@ function removeBeverageByArticleId(articleId) {
   setBeverages(afterRemoval);
 }
 
+/*
+  replaces the beverage with article id articleID with newBeverage
+*/
 function changeBeverageByArticleId(articleId, newBeverage) {
   let beverages = getBeverages();
   let changed = beverages.map(b => b.artikelid === articleId ? newBeverage : b);
@@ -246,6 +249,17 @@ function addBeverage(beverage) {
   beverages.push(beverage);
   setBeverages(beverages);
 }
+
+/*
+  Get a subset of all beverages by filtering out unwanted ones
+  filterFunc is a function that takes one argument and returns either true or false.
+*/
+function filterBeverages(filterFunc) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  return beverages.filter(filterFunc);
+}
+
 
 /*
   Order functions

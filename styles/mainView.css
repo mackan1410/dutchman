@@ -1,0 +1,16 @@
+.content{width: 900px; margin: 50px auto;}
+
+#message-field{font-size: 18px; color: Gray;}
+
+.list{width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));}
+.item{ padding: 10px; position: relative; width:90%; margin-bottom: 20px; box-shadow: 0 2px 5px gray;}
+.item-property-field{padding-left: 10px;}
+.item-property-btn{ min-width: 50px; margin-right: 10px; margin-top: 20px; text-align: left; }
+.add-to-cart-btn{-webkit-appearance: none; background-color: #857F74; color: white; border-radius: 3px; border: none; margin-bottom: 10px; padding: 10px 20px 10px;}
+.add-to-cart-btn:hover{opacity: 0.75; cursor: pointer;}
+
+@media only screen and (max-width: 1000px) {
+  .content{width: 95%;}
+  .catergories{font-size: 15px;}
+  .item-property-field{font-size: 15px;}
+}

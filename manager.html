@@ -27,7 +27,7 @@
       if(!loggedIn() || getUserCredentials() !== '0') window.location.replace('./');
 
 			initData(function() {
-				navbar($('#navbar-container'));
+				navbar($('#navbar-container'), 'manager');
         createManagerView($('#content-container'), getBeverages());
 			})
 		}

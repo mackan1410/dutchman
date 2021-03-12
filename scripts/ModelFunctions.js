@@ -203,12 +203,61 @@ function getBeverages() {
 }
 
 /*
+  Checks if a beverage with a given article id already exists
+*/
+function beverageExists(articleId) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  return beverages.find(bev => bev.artikelid === articleId);
+}
+
+/*
   get a beverages information from it's article id
 */
 function getBeverageFromArticleId(articleId) {
   let beverages = getBeverages();
   if(beverages === null) return null;
   return beverages.find(b => b.artikelid === articleId);
+}
+
+/*
+  removes a beverage with a particular article id
+*/
+function removeBeverageByArticleId(articleId) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  let afterRemoval = beverages.filter(b => b.artikelid !== articleId);
+  setBeverages(afterRemoval);
+}
+
+/*
+  replaces the beverage with article id articleID with newBeverage
+*/
+function changeBeverageByArticleId(articleId, newBeverage) {
+  let beverages = getBeverages();
+  let changed = beverages.map(b => b.artikelid === articleId ? newBeverage : b);
+  setBeverages(changed);
+}
+
+/*
+  Add a new beverage to the beverage table in localStorage
+*/
+function addBeverage(beverage) {
+  if(!beverage) return;
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  beverages.push(beverage);
+  setBeverages(beverages);
+}
+
+/*
+  Get a subset of all beverages by filtering out unwanted ones
+  filterFunc is a function that takes one argument and returns either true or false.
+*/
+function filterBeverages(filterFunc) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  return beverages.filter(filterFunc);
 }
 
 
@@ -248,5 +297,3 @@ function addOrder(order) {
   orders.push(order);
   setOrders(orders);
 }
-
-

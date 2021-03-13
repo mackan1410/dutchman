@@ -72,22 +72,6 @@ var DB = new Data(); // create a data object so that data can be loaded from the
 /*
   The below functions are used for storing/loading from localStorage
 */
-/*
-  loads all data and stores it in localStorage if the data is not already present in localStorage.
-*/
-function initData(callback) {
-  DB.loadAll(function() {
-    if(getUsers() === null){
-      setUsers(DB.users);
-      console.log('storing users in localStorage');
-    }
-    if(getBeverages() === null){
-      setBeverages(DB.beverages);
-      console.log('Storing beverages in localstorage');
-    }
-    if(callback) callback();
-  });
-}
 
 /*
   remove an item from localStorage by key
@@ -104,20 +88,6 @@ function setItem(key, value) {
 }
 
 /*
-  store all users in localStorage.
-*/
-function setUsers(users) {
-  setItem('users', JSON.stringify(users));
-}
-
-/*
-  store all beverages in localStorage.
-*/
-function setBeverages(beverages) {
-  setItem('beverages', JSON.stringify(beverages));
-}
-
-/*
   get an item from localStorage by key
 */
 function getItem(key) {
@@ -126,17 +96,72 @@ function getItem(key) {
 }
 
 /*
+  loads all data and stores it in localStorage if the data is not already present in localStorage.
+*/
+function initData(callback) {
+  initLanguage(); // set the system language if not set
+  DB.loadAll(function() {
+    if(getUsers() === null){
+      setUsers(DB.users);
+      console.log('storing users in localStorage');
+    }
+    if(getBeverages() === null){
+      setBeverages(DB.beverages);
+      console.log('Storing beverages in localstorage');
+    }
+    if(getOrders() === null){
+      setOrders([]);
+    }
+    if(callback) callback();
+  });
+}
+
+
+/*
+  Language functions below
+*/
+
+/*
+  Initializes language to swedish
+*/
+function initLanguage() {
+  if(getLanguage()) return;
+  setItem('language', 'sv');
+}
+
+/*
+  Get the current language
+*/
+function getLanguage() {
+  let lang = localStorage.getItem('language');
+  return !lang ? null : lang;
+}
+
+/*
+  Set the language
+*/
+function setLanguage(lang) {
+  setItem('language', lang);
+}
+
+
+/*
+  User functions
+*/
+
+
+/*
+  store all users in localStorage.
+*/
+function setUsers(users) {
+  setItem('users', JSON.stringify(users));
+}
+
+/*
   get all users from localStorage
 */
 function getUsers() {
   return getItem('users');
-}
-
-/*
-  get all beverages from localStorage
-*/
-function getBeverages() {
-  return getItem('beverages');
 }
 
 /*
@@ -155,4 +180,120 @@ function getUserFromId(id) {
   let users = getUsers();
   if(users === null) return null;
   return users.find(u => u.user_id === id);
+}
+
+
+/*
+  Beverage functions
+*/
+
+
+/*
+  store all beverages in localStorage.
+*/
+function setBeverages(beverages) {
+  setItem('beverages', JSON.stringify(beverages));
+}
+
+/*
+  get all beverages from localStorage
+*/
+function getBeverages() {
+  return getItem('beverages');
+}
+
+/*
+  Checks if a beverage with a given article id already exists
+*/
+function beverageExists(articleId) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  return beverages.find(bev => bev.artikelid === articleId);
+}
+
+/*
+  get a beverages information from it's article id
+*/
+function getBeverageFromArticleId(articleId) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  return beverages.find(b => b.artikelid === articleId);
+}
+
+/*
+  removes a beverage with a particular article id
+*/
+function removeBeverageByArticleId(articleId) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  let afterRemoval = beverages.filter(b => b.artikelid !== articleId);
+  setBeverages(afterRemoval);
+}
+
+/*
+  replaces the beverage with article id articleID with newBeverage
+*/
+function changeBeverageByArticleId(articleId, newBeverage) {
+  let beverages = getBeverages();
+  let changed = beverages.map(b => b.artikelid === articleId ? newBeverage : b);
+  setBeverages(changed);
+}
+
+/*
+  Add a new beverage to the beverage table in localStorage
+*/
+function addBeverage(beverage) {
+  if(!beverage) return;
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  beverages.push(beverage);
+  setBeverages(beverages);
+}
+
+/*
+  Get a subset of all beverages by filtering out unwanted ones
+  filterFunc is a function that takes one argument and returns either true or false.
+*/
+function filterBeverages(filterFunc) {
+  let beverages = getBeverages();
+  if(beverages === null) return null;
+  return beverages.filter(filterFunc);
+}
+
+
+/*
+  Order functions
+*/
+
+/*
+  Get all orders in the system
+*/
+function getOrders() {
+  return getItem('orders');
+}
+
+/*
+  Get all orders for a particular user
+*/
+function getOrdersByUserId(id) {
+  let orders = getOrders();
+  if(orders === null) return [];
+
+  return orders.filter(o => o.id != id);
+}
+
+/*
+  Update the order table in localStorage
+*/
+function setOrders(orders) {
+  setItem('orders', JSON.stringify(orders));
+}
+
+/*
+  Add a new order to the order table
+*/
+function addOrder(order) {
+  let orders = getOrders();
+  orders.push(order);
+  setOrders(orders);
 }

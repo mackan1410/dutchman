@@ -1,9 +1,16 @@
-
-
-
-function createHomepage()
+const lang = "en";
+function changeLang()
 {
-    let pageBody = document.createElement("div");
-    pageBody.id = "login";
-    pageBody.className = "languageChange";
+    if(lang === "en"){
+        lang = "sv";
+    }
+    else {
+        lang = "en";
+    }
+}
+
+dict {
+    en: {
+
+    }
 }

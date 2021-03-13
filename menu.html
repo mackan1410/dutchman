@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="styles/menu.css">
     <script type="text/javascript" src="scripts/Bev.js"></script>
     <script type="text/javascript" src="scripts/menuFuncs.js"></script>
+    <script type="text/javascript" src="scripts/stockHandler.js"></script>
+    <script type="text/javascript" src="scripts/ModelFunctions.js"></script>
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -16,9 +19,11 @@
 </ul>
 
 
-<div id="res">Sprit:</div>
-<p id="beerRes">ÖL:</p>
-<p id="wineRes">Vin:</p>
+<ul id="res"></ul>
+
+<ul id="beerRes">ÖL:</ul>
+<ul id="wineRes">Vin:</ul>
+<div id="add"><button onclick="addStock(1)">Add Vanlig Vodka</button><button onclick="reduceStock(1)">Reduce Vanlig Vodka</button></div>
 
 
 </body>

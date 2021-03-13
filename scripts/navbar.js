@@ -16,22 +16,51 @@ function toggleNavbarContent() {
 }
 
 function navbar(container, page){
+  const lang = getLanguage();
+  const dict = {
+    'cartOptText': {
+      'sv': 'Min order',
+      'en': 'My order'
+    },
+    'menuOptText': {
+      'sv': 'Meny',
+      'en': 'Menu'
+    },
+    'managerOptText': {
+      'sv': 'Hantera lagret',
+      'en': 'Manage stock'
+    },
+    'myAccountOptText': {
+      'sv': 'Mitt konto',
+      'en': 'My account'
+    },
+    'loginOptText': {
+      'sv': 'Logga in',
+      'en': 'Login'
+    },
+    'logoutOpt': {
+      'sv': 'Logga ut',
+      'en': 'Logout'
+    }
+  }
+
   //append the html to our container element
   container.append($.parseHTML( `
     <div class="navbar">
       <a class="navbar-header" href="./">The Flying Dutchman</a>
       <div class="collapse-navbar-btn" onclick="toggleNavbarContent()"><i class="fas fa-bars"></i><i class="fas fa-times"></i></div>
       <div class="navbar-content">
-        <div id="cart-opt" data-page="cart" class="navbar-item"><a href="cart.html"><i class="fas fa-shopping-cart"></i>&nbsp;Cart</a></div>
-        <div id="admin-opt" data-page="admin" class="navbar-item"><a href="admin.html"><i class="fas fa-users-cog"></i>&nbsp;Manage store</a></div>
+        <div id="menu-opt" data-page="menu" class="navbar-item"><a href="./">${dict.menuOptText[lang]}</a></div>
+        <div id="cart-opt" data-page="cart" class="navbar-item"><a href="cart.html"><i class="fas fa-shopping-cart"></i>&nbsp;${dict.cartOptText[lang]}</a></div>
+        <div id="manager-opt" data-page="manager" class="navbar-item"><a href="manager.html"><i class="fas fa-users-cog"></i>&nbsp;${dict.managerOptText[lang]}</a></div>
         <div id="user-dropdown" class="navbar-item" onclick="toggleDropdown()">
           <span class="dropdown-text"></span> <i class="fas fa-caret-down"></i>
           <div class="dropdown hidden">
-            <div class="dropdown-item"><a href="user.html">My account</a></div>
-            <div class="dropdown-item"><a href="./" onclick="logout()">Logout</a></div>
+            <div class="dropdown-item"><a href="user.html">${dict.myAccountOptText[lang]}</a></div>
+            <div class="dropdown-item"><a href="./" onclick="logout()">${dict.logoutOpt[lang]}</a></div>
           </div>
         </div>
-        <div id="login-opt" data-page="login" class="navbar-item"><a href="login.html">Login</a></div>
+        <div id="login-opt" data-page="login" class="navbar-item"><a href="login.html">${dict.loginOptText[lang]}</a></div>
       </div>
     </div>` ));
 
@@ -45,7 +74,7 @@ function navbar(container, page){
     if(!loggedIn()) {
       $('#user-dropdown').hide();
       $('#cart-opt').hide();
-      $('#admin-opt').hide();
+      $('#manager-opt').hide();
       return null;
     }
 
@@ -55,6 +84,6 @@ function navbar(container, page){
     $('.dropdown-text').html(username);
 
     //disable the admin page if user is a vip customer
-    if(getUserCredentials() === '3') $('#admin-opt').hide();
+    if(getUserCredentials() === '3') $('#manager-opt').hide();
 
 }

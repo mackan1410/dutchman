@@ -1,4 +1,4 @@
-var DB2 = {
+{
     "spirits" :
             [{
                 "nr": "10001",
@@ -24,7 +24,6 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "FS",
                 "ekologisk": "0",
-                "koscher": "0",
                 "stock": "0"
             }, {
                 "nr": "1001",
@@ -50,7 +49,6 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "FS",
                 "ekologisk": "0",
-                "koscher": "0", 
                 "stock": "0"
             }, {
                 "nr": "1001201",
@@ -76,7 +74,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "FS",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1001202",
                 "artikelid": "407506",
@@ -101,7 +99,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "FS",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1003802",
                 "artikelid": "513291",
@@ -126,7 +124,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TSS",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1004801",
                 "artikelid": "733051",
@@ -151,7 +149,7 @@ var DB2 = {
                 "modul": "T7",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1004901",
                 "artikelid": "733068",
@@ -176,7 +174,7 @@ var DB2 = {
                 "modul": "T7",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1005001",
                 "artikelid": "733084",
@@ -201,7 +199,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1005101",
                 "artikelid": "733200",
@@ -226,7 +224,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1005201",
                 "artikelid": "733236",
@@ -251,7 +249,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1005401",
                 "artikelid": "733429",
@@ -276,7 +274,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1005502",
                 "artikelid": "733446",
@@ -301,7 +299,7 @@ var DB2 = {
                 "modul": "T7",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1005602",
                 "artikelid": "733468",
@@ -326,7 +324,7 @@ var DB2 = {
                 "modul": "T7",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "101",
                 "artikelid": "1",
@@ -351,7 +349,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "FS",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1010001",
                 "artikelid": "817007",
@@ -376,7 +374,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1010404",
                 "artikelid": "611864",
@@ -401,7 +399,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TST",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1010501",
                 "artikelid": "659534",
@@ -426,7 +424,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TST",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1011302",
                 "artikelid": "723428",
@@ -451,7 +449,7 @@ var DB2 = {
                 "modul": "T5",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1011401",
                 "artikelid": "811782",
@@ -476,7 +474,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }, {
                 "nr": "1011601",
                 "artikelid": "614078",
@@ -501,7 +499,7 @@ var DB2 = {
                 "modul": "",
                 "sortiment": "TSE",
                 "ekologisk": "0",
-                "koscher": "0", "stock": "0"
+                "stock": "0"
             }], 
             "wine" :
     [{
@@ -528,7 +526,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1207401",
             "artikelid": "13650",
@@ -553,7 +551,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1208501",
             "artikelid": "32777",
@@ -578,7 +576,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1209408",
             "artikelid": "36202",
@@ -603,7 +601,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1209501",
             "artikelid": "35322",
@@ -628,7 +626,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1209502",
             "artikelid": "732557",
@@ -653,7 +651,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1210301",
             "artikelid": "36345",
@@ -678,7 +676,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1210304",
             "artikelid": "38507",
@@ -703,7 +701,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1210501",
             "artikelid": "27485",
@@ -728,7 +726,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1210502",
             "artikelid": "643373",
@@ -753,7 +751,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }], "beer" :
         [{
             "nr": "1135612",
@@ -779,7 +777,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "TSS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1140003",
             "artikelid": "190837",
@@ -804,7 +802,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1145103",
             "artikelid": "442400",
@@ -829,7 +827,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "129603",
             "artikelid": "7096",
@@ -854,7 +852,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "158503",
             "artikelid": "1187",
@@ -879,7 +877,7 @@ var DB2 = {
             "modul": "",
             "sortiment": "FS",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0"
+            "stock": "0"
         }, {
             "nr": "1108201",
             "artikelid": "736682",
@@ -904,6 +902,6 @@ var DB2 = {
             "modul": "T5",
             "sortiment": "TSE",
             "ekologisk": "0",
-            "koscher": "0", "stock": "0","stock": "0"
+            "stock": "0"
         }]
-};
+}

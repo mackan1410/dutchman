@@ -1,19 +1,32 @@
-
 body {
-    background: cornflowerblue;
+    background: white;
+    /* innan: cornflower blue*/
 }
 
-#pubname{
-    color: black;
-}
 
 ul, li {
     margin: 5px;
     padding: 0;
 }
 
+h1 {
+    width: 100%;
+    color: white;
+    padding: 1%;
+    text-align: center;
+    background-color: #1D2731;
+    margin-top: 0;
+}
+
+
+
 .menuButton{
     position: relative;
+    left: 1400px;
+}
+#undobutton{
+    position:absolute;
+    top: 570px;
     left: 1400px;
 }
 #b1{
@@ -211,4 +224,3 @@ ul, li {
     width: 200px;
 
 }
-

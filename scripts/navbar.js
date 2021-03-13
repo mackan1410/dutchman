@@ -41,6 +41,10 @@ function navbar(container, page){
     'logoutOpt': {
       'sv': 'Logga ut',
       'en': 'Logout'
+    },
+    'barviewOptText':{
+      'sv': 'Bordsöversikt',
+      'en': 'table overview'
     }
   }
 
@@ -52,6 +56,7 @@ function navbar(container, page){
       <div class="navbar-content">
         <div id="menu-opt" data-page="menu" class="navbar-item"><a href="./">${dict.menuOptText[lang]}</a></div>
         <div id="cart-opt" data-page="cart" class="navbar-item"><a href="cart.html"><i class="fas fa-shopping-cart"></i>&nbsp;${dict.cartOptText[lang]}</a></div>
+        <div id="cart-opt" data-page="tableview" class="navbar-item"><a href="tableview.html"><i class="fas fa-table-view"></i>${dict.barviewOptText[lang]}</a></div>
         <div id="manager-opt" data-page="manager" class="navbar-item"><a href="manager.html"><i class="fas fa-users-cog"></i>&nbsp;${dict.managerOptText[lang]}</a></div>
         <div id="user-dropdown" class="navbar-item" onclick="toggleDropdown()">
           <span class="dropdown-text"></span> <i class="fas fa-caret-down"></i>
@@ -75,6 +80,9 @@ function navbar(container, page){
       $('#user-dropdown').hide();
       $('#cart-opt').hide();
       $('#manager-opt').hide();
+
+      /* Denna bör vara för anställda endast. Lite osäker how to //Oskar */
+      //$('#barView-opt').hide();
       return null;
     }
 

@@ -3,7 +3,6 @@ body {
     /* innan: cornflower blue*/
 }
 
-
 ul, li {
     margin: 5px;
     padding: 0;
@@ -17,8 +16,6 @@ h1 {
     background-color: #1D2731;
     margin-top: 0;
 }
-
-
 
 .menuButton{
     position: relative;

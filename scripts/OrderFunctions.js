@@ -64,8 +64,7 @@ function addToBill(table,uId,product,price,qt){
 
 
 
-        console.log(typeof tbills)
-        console.log("tbills::::")
+
     console.log(tbills);
         setBill(table,tbills);
 }

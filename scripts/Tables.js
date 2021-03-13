@@ -43,6 +43,16 @@ function fillMenu(){
 
 fillMenu();
 
+/* --------
+
+
+KÄNSLIGA TITTARE VARNAS
+
+redoing functions after undo redo is done prob.
+
+-----------
+ */
+
 
 /*
 Highlightar senast klickade bord. Återställer färg för den förra.
@@ -71,7 +81,6 @@ function pay_bill(){
         $(li).empty();
     });
     document.getElementById(('s' + selector[1].charAt(1))).innerHTML = bills[selector[1].charAt(1)].toString() + 'kr.';
-    console.log(getReceipts());
 }
 
 function addItemToBill(int){
@@ -90,8 +99,6 @@ function addItemToBill(int){
         try {
             let table = getTableBills(parseInt(selector[1][1]));
             $(li).empty();
-            console.log("table::::");
-            console.log(table);
             let sum = 0;
             table.forEach(function (j) {
                 $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + '</li>');

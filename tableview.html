@@ -14,11 +14,12 @@ undo redo på add item
     <meta charset="UTF-8">
     <title>The flying dutchman</title>
     <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scripts/cookies.js"></script>
+    <script type="text/javascript" src="scripts/undoRedo.js"></script>
     <script type="text/javascript" src="scripts/ModelFunctions.js"></script>
     <script type="text/javascript" src="scripts/Tables.js"></script>
     <script type="text/javascript" src="scripts/navbar.js"></script>
     <script type="text/javascript" src="scripts/login.js"></script>
-    <script type="text/javascript" src="scripts/cookies.js"></script>
     <script type="text/javascript" src="scripts/PaymentFunctions.js"></script>
     <script type="text/javascript" src="scripts/OrderFunctions.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/tablestyles.css">
@@ -40,7 +41,9 @@ undo redo på add item
     </script>
 
 <button type="button" id = "payButton" onclick="pay_bill()">Pay</button>
-
+<button type="button" id = "undoButton" onclick="undoAddItemToBill()">Undo</button>
+                                                    <!--maybe get t from selector  -->
+<button type="button" id = "removeButton" onclick="removeFromBill(1,190719)">test remove</button>
 <div id = "menuTest">
     <button type="button" class = "menuButton" id = "b1" onclick="addItemToBill(1)">Add item 1</button>
     <button type="button" class = "menuButton" id = "b2" onclick="addItemToBill(2)">Add item 2</button>

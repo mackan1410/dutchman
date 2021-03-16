@@ -12,6 +12,8 @@ To do:
  */
 
 
+setCookie('billUndoRedo',JSON.stringify(order1));
+var x = new undoRedoManager();
 function initTables(tablebills){
 
     setItem('table',JSON.stringify(tablebills))
@@ -33,13 +35,14 @@ function clearTable(tNr) {
     setItem('table' + tNr.toString(), []);
 }
 function addToBill(table,uId,product,price,qt){
-        let newtab = {"table":table,
-                  "user_id":uId,
-                  "artikel_id":product,
-                  "pris": price,
-                  "quantity": qt
+        let newtab = {'table':table,
+                  'user_id':uId,
+                  'artikel_id':product,
+                  'pris': price,
+                  'quantity': qt
         };
         console.log("added to bill");
+        addBillToUndo(table);
 
         let tbills = getTableBills(table);
 
@@ -48,31 +51,26 @@ function addToBill(table,uId,product,price,qt){
             tbills.push(newtab);
         }else{
         try{
-        let newtable = tbills.find(u => u.artikel_id === product);
+        let newtable = tbills.find(u => u.artikel_id === product.toString());
             if (newtable != undefined || newtable != null) {
                 let qInt = parseInt(newtable.quantity);
                 qInt += parseInt(qt);
                 newtable.quantity = qInt.toString();
                 console.log(typeof newtable.quantity);
-                console.log("newtable::::")
                 console.log(newtable.quantity);
                 let index = tbills.findIndex(newtable);
                 tbills[index] = newtable; }else{ tbills.push(newtab);}}
         catch (err){
-                console.log("err")
+                console.log("err");
         }}
-
-
-
-
-    console.log(tbills);
+        console.log(tbills);
         setBill(table,tbills);
+
+
+
 }
-function removeFromBill(table,product){
+function removeFromBill2(table,product){
     let tbills = getTableBills(table);
-    if (tbills === [] || tbills === null || tbills === undefined) {
-        return;
-    }else{
         //console.log("tbills::");
         //console.log(tbills);
         let newtable = tbills.find(u => u.artikel_id === product);
@@ -96,9 +94,79 @@ function removeFromBill(table,product){
             return el != null;
         });
     }
+    console.log("asd");
+    console.log(getTableBills(table));
     setBill(table,[newtable]);
-    }
 }
+function removeFromBill2(table,product){
+    let tbills = getTableBills(table);
+    //console.log("tbills::");
+    //console.log(tbills);
+    let newtable = tbills.find(u => u.artikel_id === product);
+    //tbills.findIndex(product)
+    if (newtable != undefined){
+        if (newtable.quantity < 2) {
+            var filtered = tbills.filter(function (el) {
+                return el.artikel_id != product;
+            });
+            newtable = filtered;
+
+        }else{
+            let qInt = parseInt(newtable.quantity);
+            qInt -= 1;
+            newtable.quantity = qInt.toString();
+
+
+        }}
+
+    if (filtered != undefined) {
+        var filtered1 = filtered.filter(function (el) {
+            return el != null;
+        });
+        setBill(table,[newtable]);
+    }
+    console.log("asd");
+    console.log(getTableBills(table));
+    setBill(table,[]);
+}
+function removeFromBill(table,product){
+    let tbills = getTableBills(table);
+
+    if (tbills === null || tbills === [null]){
+        return;
+    }
+    try {
+        var newtable = tbills.find(u => u.artikel_id === product.toString());
+    }catch(err){
+        console.log(err);
+    }
+    //tbills.findIndex(product)
+    if (newtable != undefined){
+        if (newtable.quantity < 2) {
+            var filtered = tbills.filter(function (el) {
+                return el.artikel_id != product;
+            });
+            newtable = filtered;
+
+        }else{
+            let qInt = parseInt(newtable.quantity);
+            qInt -= 1;
+            newtable.quantity = qInt.toString();
+
+
+        }
+        setBill(table,[newtable]);
+        console.log("decreased quantity");
+        console.log(getTableBills(table));
+        return;
+    }
+
+
+    console.log("removed item");
+    console.log(getTableBills(table));
+    setBill(table,[]);
+}
+
 
 function setBill(tNr,bill){
     setItem('table' + tNr,JSON.stringify(bill));
@@ -132,4 +200,85 @@ function printbills(){
     console.log("table 8")
     console.log(getTableBills(8));
 }
+
+
+/*
+    undo redo functions,then called to in former functions
+ */
+
+
+function addBillToUndo(tNr){
+    //setCookie('billUndoRedo',[]);
+    let table = getTableBills(tNr);
+    //get the current stack
+    let savedUndoRedo = JSON.parse(getCookie('billUndoRedo'));
+    //new manager, get whole stacks
+    let undoRedo = new undoRedoManager(savedUndoRedo.undoStack,savedUndoRedo.redoStack);
+    //push table to undostack
+    undoRedo.pushUndo(table);
+    setCookie('billUndoRedo',JSON.stringify(undoRedo));
+    console.log(getCookie('billUndoRedo'));
+}
+
+function undoAddItemToBill(){
+    //
+    let savedUndoRedo = JSON.parse(getCookie('billUndoRedo'));
+    var tNr = selector[1][1];
+    console.log(savedUndoRedo);
+    try {
+        var table = getItem('table' + tNr);
+
+    }catch(err){
+        return;
+    }
+    //undostack töms när man gör undo
+    let undoRedo = new undoRedoManager(savedUndoRedo.undoStack, savedUndoRedo.redoStack);
+
+
+    undoRedo.undo(table,function(prev){
+        console.log("setting " + tNr);
+        setItem('table' + tNr.toString(),JSON.stringify(prev));
+
+
+    });
+    printTable(getItem('table' + tNr.toString()));
+    setCookie('billUndoRedo',JSON.stringify(undoRedo));
+    console.log("undobill");
+    console.log(getCookie('billUndoRedo'));
+}
+
+//table to push into example stack before example
+
+
+
+/*
+let table = getTableBills(1);
+//new undomanager, always do
+var undoRedo = new undoRedoManager();
+//push table to undostack
+undoRedo.pushUndo(table);
+//store undoredostack under billundoredo
+setCookie('billUndoRedo',JSON.stringify(undoRedo))
+console.log(getCookie('billUndoRedo'));
+//get the current stack
+let savedUndoRedo = JSON.parse(getCookie('billUndoRedo'));
+//new manager, get whole stacks
+var undoRedo = new undoRedoManager(savedUndoRedo.undoStack,savedUndoRedo.redoStack);
+
+//add stuff to table
+addToBill(order4.table,order4.user_id,order4.arikel_id,order4.pris,order4.quantity);
+addToBill(order3.table,order3.user_id,order3.arikel_id,order3.pris,order3.quantity);
+//push to undo stack
+undoRedo.pushUndo(table);
+//store undo stack
+setCookie('billUndoRedo',JSON.stringify(undoRedo))
+
+//example print
+console.log(getCookie('billUndoRedo'));
+*/
+
+
+
+
+
 

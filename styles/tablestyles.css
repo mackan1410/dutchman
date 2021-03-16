@@ -17,14 +17,21 @@ h1 {
     margin-top: 0;
 }
 
+
+
 .menuButton{
     position: relative;
     left: 1400px;
 }
-#undobutton{
-    position:absolute;
+#undoButton{
+    position:relative;
     top: 570px;
-    left: 1400px;
+    left: 1450px;
+}
+#removeButton{
+    position:relative;
+    top: 570px;
+    left: 1500px;
 }
 #b1{
     position:absolute;

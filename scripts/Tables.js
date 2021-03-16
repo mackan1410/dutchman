@@ -43,6 +43,11 @@ function fillMenu(){
 
 fillMenu();
 
+
+
+
+
+
 /* --------
 
 
@@ -113,6 +118,27 @@ function addItemToBill(int){
     );
 }
 
+
+function printTable(tablebill) {
+    let table = tablebill
+    $(document).ready(function () {
+        try{
+            var li = "#li" + table[0].table;
+        }catch(err){
+            console.log("null mannen");
+            /* TODO: should get correct table instead of selector */
+            var li = "#li" + selector[1][1];}
+        $(li).empty();
+        let sum = 0;
+        table.forEach(function (j) {
+            $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + '</li>');
+            sum += parseInt(j.quantity) * parseInt(j.pris);
+        });
+        document.getElementById(('s' + selector[1].charAt(1))).innerHTML =
+            sum.toString() + 'kr.';
+    });
+}
+
 /*
   get beverage information by id
  */
@@ -142,14 +168,14 @@ let order2 = {
     "quantity":"1"
 }
 let order3 = {
-    "table":"5",
+    "table":"1",
     "user_id":"123",
     "artikel_id":"51029",
     "pris":"120",
     "quantity":"1"
 }
 let order4 = {
-    "table":"5",
+    "table":"1",
     "user_id":"11",
     "artikel_id":"407506",
     "pris":"1250",
@@ -184,5 +210,7 @@ let order8 = {
     "quantity":"10"
 }
 
-orderList = [order1,order2,order3,order4,order5,order6,order7,order8]
+orderList = [order1,order2,order3,order4,order5,order6,order7,order8];
+
+
 

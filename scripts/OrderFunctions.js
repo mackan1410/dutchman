@@ -5,8 +5,6 @@
 
 To do:
 
-    - test new functions whith tables.js
-    - addtoBill quantities
 
 
  */
@@ -29,8 +27,6 @@ function initTables(tablebills){
 }
 
 function clearTable(tNr) {
-    //console.log(receipts)
-    //setItem('table' + tNr.toString(), JSON.stringify(''));
     localStorage.removeItem('table' + tNr.toString());
     setItem('table' + tNr.toString(), []);
 }
@@ -231,21 +227,46 @@ function undoAddItemToBill(){
     }catch(err){
         return;
     }
-    //undostack töms när man gör undo
     let undoRedo = new undoRedoManager(savedUndoRedo.undoStack, savedUndoRedo.redoStack);
 
-
-    undoRedo.undo(table,function(prev){
+    if(table != null || table != [null]){
+    undoRedo.undo(table,function(prev) {
         console.log("setting " + tNr);
-        setItem('table' + tNr.toString(),JSON.stringify(prev));
+        setItem('table' + tNr.toString(), JSON.stringify(prev));
 
-
-    });
+    });   }
     printTable(getItem('table' + tNr.toString()));
     setCookie('billUndoRedo',JSON.stringify(undoRedo));
     console.log("undobill");
     console.log(getCookie('billUndoRedo'));
 }
+
+function redoAddItemToBill(){
+    //
+
+    let savedUndoRedo = JSON.parse(getCookie('billUndoRedo'));
+    tNr = selector[1][1];
+    console.log(savedUndoRedo);
+    try {
+        var table = getItem('table' + tNr);
+
+    }catch(err){
+        return;
+    }
+    let undoRedo = new undoRedoManager(savedUndoRedo.undoStack, savedUndoRedo.redoStack);
+
+    if(table != null || table != [null]){
+        undoRedo.redo(table,function(prev) {
+            console.log("setting " + tNr);
+            setItem('table' + tNr.toString(), JSON.stringify(prev));
+
+        });   }
+    printTable(getItem('table' + tNr.toString()));
+    setCookie('billUndoRedo',JSON.stringify(undoRedo));
+    console.log("undobill");
+    console.log(getCookie('billUndoRedo'));
+}
+
 
 //table to push into example stack before example
 

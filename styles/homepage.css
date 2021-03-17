@@ -67,8 +67,11 @@ section {
         width: 30vw;
     }
     #switch{
-        position: static;
+        position: absolute;
         margin: 0px 0px 0px;
+        top: 82%;
+        left: 47%;
+        transform: translate(-50%, -50%);
     }
 
 }

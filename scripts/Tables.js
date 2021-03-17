@@ -1,18 +1,13 @@
 
 /*
 
-viktigt: undo redo
-         mvc
+To do:
+       CSS
+       MVC
+       Undo-redo
+       Språk
 
 
-next: -översättning
-      -spara betalning i local
-      -spara "carts" i local
-      -Skriv ut riktiga menyn
-      -kunna beställa och betala "på plats" ej kopplat till bord
-      -fixa selector
-      -fixa .charAt(1)
-      -minska i lager
  */
 
 
@@ -48,6 +43,16 @@ function fillMenu(){
 
 fillMenu();
 
+/* --------
+
+
+KÄNSLIGA TITTARE VARNAS
+
+redoing functions after undo redo is done prob.
+
+-----------
+ */
+
 
 /*
 Highlightar senast klickade bord. Återställer färg för den förra.
@@ -63,20 +68,14 @@ function selectTable(tNo){
     selector[1] = tNo
 }
 
-/*
-    får p == 'p' när man klickar på pay-knappen.
-    om 'p', töm listan hos selected-table
-    resten används ej
- */
 function pay_bill(){
 
     //nollställ summan
-    bills[selector[1].charAt(1)] = 0;
+    //get tab:
+    let order =  getTableBills(parseInt(selector[1].charAt(1)));
+    addPayment(order);
+    clearTable(parseInt(selector[1].charAt(1)));
 
-    //nollställ tab
-    tablebills[selector[1].charAt(1)] = [];
-
-    //i have no idea what im doing
     $(document).ready(function () {
         let li = "#li" + selector[1].charAt(1);
         $(li).empty();
@@ -84,19 +83,34 @@ function pay_bill(){
     document.getElementById(('s' + selector[1].charAt(1))).innerHTML = bills[selector[1].charAt(1)].toString() + 'kr.';
 }
 
-function addItemToBill(p){
-    var tNr = parseInt(p);
-    let x = menu[tNr][1];
-    bills[selector[1].charAt(1)] += parseInt(x);
-    tablebills[selector[1].charAt(1)].push(addItem(menu[tNr][0],menu[tNr][1]));
+function addItemToBill(int){
+    let obj = orderList[int-1];
     document.getElementById(('s' + selector[1].charAt(1))).innerHTML = bills[selector[1].charAt(1)].toString() + 'kr.';
 
+    /*
+    real stuff
+     */
+    addToBill(selector[1].charAt(1),obj.user_id,obj.artikel_id,obj.pris,obj.quantity);
 
     $(document).ready(function() {
-        let item = menu[tNr][0].namn;
-        let li = "#li" + selector[1].charAt(1);
-        $(li).append('<li>' + item + '</li>');
-    });
+        var tNr = selector[1].charAt(1);
+        let item = getBeverageFromId(obj.artikel_id);
+        let li = "#li" + selector[1][1];
+        try {
+            let table = getTableBills(parseInt(selector[1][1]));
+            $(li).empty();
+            let sum = 0;
+            table.forEach(function (j) {
+                $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + '</li>');
+                sum += parseInt(j.quantity) * parseInt(j.pris);
+            });
+            document.getElementById(('s' + selector[1].charAt(1))).innerHTML =
+                sum.toString() + 'kr.';
+        }catch(err){
+            console.log(err);
+        }
+    }
+    );
 }
 
 /*
@@ -108,17 +122,67 @@ function getBeverageFromId(id) {
     return bevs.find(u => u.artikelid === id);
 }
 
-function addItem(bev,price){
-    return [bev.namn,price]
+
+
+
+/* temporary orders until i know how to fetch prices and User_id*/
+
+let order1 = {
+    "table":"1",
+    "user_id":"2",
+    "artikel_id":"25053",
+    "pris":"123",
+    "quantity":"1"
+}
+let order2 = {
+    "table":"5",
+    "user_id":"6",
+    "artikel_id":"190719",
+    "pris":"120",
+    "quantity":"1"
+}
+let order3 = {
+    "table":"5",
+    "user_id":"123",
+    "artikel_id":"51029",
+    "pris":"120",
+    "quantity":"1"
+}
+let order4 = {
+    "table":"5",
+    "user_id":"11",
+    "artikel_id":"407506",
+    "pris":"1250",
+    "quantity":"1"
+}
+let order5 = {
+    "table":"5",
+    "user_id":"11",
+    "artikel_id":"513291",
+    "pris":"1250",
+    "quantity":"1"
+}
+let order6 = {
+    "table":"5",
+    "user_id":"11",
+    "artikel_id":"723841",
+    "pris":"1250",
+    "quantity":"1"
+}
+let order7 = {
+    "table":"5",
+    "user_id":"11",
+    "artikel_id":"733051",
+    "pris":"1250",
+    "quantity":"1"
+}
+let order8 = {
+    "table":"5",
+    "user_id":"11",
+    "artikel_id":"733051",
+    "pris":"1250",
+    "quantity":"10"
 }
 
-
-
-
-
-
-
-
-
-
+orderList = [order1,order2,order3,order4,order5,order6,order7,order8]
 

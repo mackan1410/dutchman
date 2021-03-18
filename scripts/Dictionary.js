@@ -27,7 +27,7 @@ function update_view(){
 }
 
 function change_lang() {
-    if (language=='en') {
+    if (language =='en') {
         language = 'sv';
     } else {language = 'en'};
     update_view();

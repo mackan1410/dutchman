@@ -20,31 +20,38 @@ function navbar(container, page){
   const dict = {
     'cartOptText': {
       'sv': 'Min order',
-      'en': 'My order'
+      'en': 'My order',
+      'hi' : 'मेरा आदेश'
     },
     'menuOptText': {
       'sv': 'Meny',
-      'en': 'Menu'
+      'en': 'Menu',
+      'hi' : 'मेन्यू'
     },
     'managerOptText': {
       'sv': 'Hantera lagret',
-      'en': 'Manage stock'
+      'en': 'Manage stock',
+      'hi' : 'स्टॉक प्रबंधित करें'
     },
     'myAccountOptText': {
       'sv': 'Mitt konto',
-      'en': 'My account'
+      'en': 'My account',
+      'hi' : 'मेरा खाता'
     },
     'loginOptText': {
       'sv': 'Logga in',
-      'en': 'Login'
+      'en': 'Login',
+      'hi' : 'लॉग इन करें'
     },
     'logoutOpt': {
       'sv': 'Logga ut',
-      'en': 'Logout'
+      'en': 'Logout',
+      'hi' : 'लॉग आउट'
     },
     'barviewOptText':{
       'sv': 'Bordsöversikt',
-      'en': 'table overview'
+      'en': 'table overview',
+      'hi' : 'तालिका अवलोकन'
     }
   }
 
@@ -54,7 +61,7 @@ function navbar(container, page){
       <a class="navbar-header" href="./">The Flying Dutchman</a>
       <div class="collapse-navbar-btn" onclick="toggleNavbarContent()"><i class="fas fa-bars"></i><i class="fas fa-times"></i></div>
       <div class="navbar-content">
-        <div id="menu-opt" data-page="menu" class="navbar-item"><a href="./">${dict.menuOptText[lang]}</a></div>
+        <div id="menu-opt" data-page="menu" class="navbar-item"><a href="menu.html">${dict.menuOptText[lang]}</a></div>
         <div id="cart-opt" data-page="cart" class="navbar-item"><a href="cart.html"><i class="fas fa-shopping-cart"></i>&nbsp;${dict.cartOptText[lang]}</a></div>
         <div id="cart-opt" data-page="tableview" class="navbar-item"><a href="tableview.html"><i class="fas fa-table-view"></i>${dict.barviewOptText[lang]}</a></div>
         <div id="manager-opt" data-page="manager" class="navbar-item"><a href="manager.html"><i class="fas fa-users-cog"></i>&nbsp;${dict.managerOptText[lang]}</a></div>

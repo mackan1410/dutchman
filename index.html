@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Main view</title>
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-	<link rel="stylesheet" href="styles/main.css"/>
-	<link rel="stylesheet" href="styles/navbar.css"/>
-  <link rel="stylesheet" href="styles/mainView.css"/>
+    <meta charset="UTF-8">
+    <title>The Flying Dutchman</title>
+    <link rel="stylesheet" type="text/css" href="styles/homepage.css">
+    <script src = "scripts/ModelFunctions.js" defer> </script>
+    <script src = "scripts/Dictionary.js"> </script>
 </head>
-
 <body>
+    <h1 id = "welcome">Welcome to The Flying Dutchman</h1>
+    <section>
+    <a href="login.html">
+    <button id = "login"> Log in</button>
+    </a>
+        <a href="menu.html">
+    <button id = "menu" > Menu</button>
+    </a>
+    </section>
 
-  <div id="navbar-container"></div>
-	<div id="content-container"></div>
+    <button id = "swe" onclick="changeLanguage('sv')" >Sweden</button>
+    <button id = "eng" onclick="changeLanguage('en')" >English</button>
+    <button id = "hi" onclick="changeLanguage('hi')" >Hindi</button>
 
-	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
-	<script type="text/javascript" src="scripts/ModelFunctions.js"></script>
-  <script type="text/javascript" src="scripts/cookies.js"></script>
-  <script type="text/javascript" src="scripts/login.js"></script>
-	<script type="text/javascript" src="scripts/undoRedo.js"></script>
-	<script type="text/javascript" src="scripts/cart.js"></script>
-	<script type="text/javascript" src="scripts/navbar.js"></script>
-  <script type="text/javascript" src="scripts/mainView.js"></script>
-	<script>
-		window.onload = function() {
-			initData(function() {
-				navbar($('#navbar-container'), 'menu');
-        createMenuView($('#content-container'), getBeverages(), getLanguage(), true, true, true, '0', loggedIn());
-			})
-		}
-
-	</script>
 </body>
 </html>

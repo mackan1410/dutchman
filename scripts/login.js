@@ -10,23 +10,28 @@ function displayLoginForm(container) {
   const dict = {
     'header': {
       'sv': 'Logga in',
-      'en': 'Login'
+      'en': 'Login',
+      'hi' : 'लॉग इन करें'
     },
     'userFieldText': {
       'sv': 'Användarnamn...',
       'en': 'Username...',
+      'hi' : 'उपयोगकर्ता नाम...'
     },
     'passwordFieldText': {
       'sv': 'Lösenord...',
-      'en': 'Password...'
+      'en': 'Password...',
+      'hi' : 'कुंजिका...'
     },
     'submitBtnText': {
       'sv': 'Logga in',
-      'en': 'Login'
+      'en': 'Login',
+      'hi' : 'लॉग इन करें'
     },
     'loginErrorMessage': {
       'sv': 'Felaktigt användarnamn eller lösenord',
-      'en': 'Wrong username or password. Try again.'
+      'en': 'Wrong username or password. Try again.',
+      'hi' : 'उपयोगकर्ता का गलत नाम और पासवर्ड। पुनः प्रयास करें।'
     }
   }
 

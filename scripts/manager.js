@@ -4,71 +4,88 @@ function createManagerView(container, beverages) {
   const dict = {
     'mainHeader': {
       'sv': 'Alla drycker',
-      'en': 'All beverages'
+      'en': 'All beverages',
+      'hi' : 'सभी पेय पदार्थ'
     },
     'addNewDropdownBtnText': {
       'sv': 'Lägg till ny dryck',
-      'en': 'Add new beverage'
+      'en': 'Add new beverage',
+      'hi' : 'नया पेय जोड़ें'
     },
     'addNewNameFieldText': {
       'sv': 'Namn',
-      'en': 'Name'
+      'en': 'Name',
+      'hi' : 'नाम'
     },
     'addNewIdFieldText': {
       'sv': 'Artikel ID',
-      'en': 'Article ID'
+      'en': 'Article ID',
+      'hi' : 'अनुच्छेद आईडी'
     },
     'addNewPriceFieldText': {
       'sv': 'Pris',
-      'en': 'Price'
+      'en': 'Price',
+      'hi' : 'पंचायती राज संस्थाओं'
     },
     'addNewAbvFieldText': {
       'sv': 'Volymprocent alkohol(vol)',
-      'en': 'Alcohol by volume(abv)'
+      'en': 'Alcohol by volume(abv)',
+      'hi' : 'मात्रा द्वारा शराब (abv)'
     },
     'addNewAmountFieldText': {
       'sv': 'Antal i lager',
-      'en': 'Number in stock'
+      'en': 'Number in stock',
+      'hi' : 'स्टॉक में नंबर'
     },
     'addNewTypeFieldText': {
       'sv': 'Dryckeskategori',
-      'en': 'Beverage category'
+      'en': 'Beverage category',
+      'hi' : 'पेय की श्रेणी'
     },
     'addNewBeerOptText': {
       'sv': 'Öl',
-      'en': 'Beer'
+      'en': 'Beer',
+      'hi' : 'बीयर'
     },
     'addNewWineOptText': {
       'sv': 'Vin',
-      'en': 'Wine'
+      'en': 'Wine',
+      'hi' : 'शराब'
     },
     'addNewSpiritsOptText': {
       'sv': 'Sprit',
-      'en': 'Spirits'
+      'en': 'Spirits',
+      'hi' : 'आत्माओं'
     },
     'addNewBtnText': {
       'sv': 'Lägg till',
-      'en': 'Add'
+      'en': 'Add',
+      'hi' : 'जोड़ना'
     },
     'nameFieldCategoryText': {
       'sv': 'Dryck(id)',
-      'en': 'Beverage(id)'
+      'en': 'Beverage(id)',
+      'hi' : 'सदाबहार (आईडी)'
     },
     'removeBtnCategoryText': {
       'sv': 'Ta bort',
-      'en': 'Delete'
+      'en': 'Delete',
+      'hi' : 'हटाएं'
     },
     'editBtnCategoryText': {
       'sv': 'Redigera',
-      'en': 'Edit'
+      'en': 'Edit',
+      'hi' : 'संपादित करें'
     },
     'removeConfirmMessage': {
       'sv': 'Vill du verkligen ta bort den här drycken?',
-      'en': 'Do you really want to remove this item?'
+      'en': 'Do you really want to remove this item?',
+      'hi' : 'क्या आप वास्तव में इस आइटम को निकालना चाहते हैं?'
     },
     'editConfirmMessage': {
       'sv': 'Vill du verkligen redigera den här drycken?',
-      'en': 'Do you really want to edit this item?'
+      'en': 'Do you really want to edit this item?',
+      'hi' : 'क्या आप वास्तव में इस आइटम को संपादित करना चाहते हैं?'
     }
   }
 

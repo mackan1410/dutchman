@@ -16,8 +16,45 @@ h1 {
     background-color: #1D2731;
     margin-top: 0;
 }
+/*
+.multi-selectbox{
+    position:relative;
+
+}
+*/
+
+#payButton{
+    position: absolute;
+    left: 1500px;
+    top: 700px;
+}
+#addButton{
+    position: absolute;
+    top: 900px;
+    left: 1050px;
+}
+#rmvButton{
+    position: absolute;
+    top: 930px;
+    left: 1050px;
+}
 
 
+
+
+
+#selectbox{
+    position: absolute;
+    overflow-y:scroll;
+    padding:0 7px 0 0;
+    width: calc(10% + 17px);
+    height:10%;
+    border:0;
+    font-size: 20px;
+    top: 800px;
+    left: 800px;
+
+}
 
 .menuButton{
     position: relative;
@@ -103,11 +140,6 @@ h1 {
 
 }
 
-#payButton{
-    position: absolute;
-    left: 1500px;
-    top: 700px;
-}
 /*
 #tbo{
     position: absolute;

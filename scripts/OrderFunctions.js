@@ -9,7 +9,7 @@ To do:
 
  */
 
-
+displayMenuScrollbar();
 setCookie('billUndoRedo',JSON.stringify(order1));
 var x = new undoRedoManager();
 function initTables(tablebills){
@@ -22,6 +22,7 @@ function initTables(tablebills){
     setItem('table5',JSON.stringify(tablebills))
     setItem('table6',JSON.stringify(tablebills))
     setItem('table7',JSON.stringify(tablebills))
+
 
 
 }
@@ -126,8 +127,9 @@ function removeFromBill2(table,product){
     setBill(table,[]);
 }
 function removeFromBill(table,product){
-    let tbills = getTableBills(table);
-
+    let tbills = getItem('table' + table);
+    console.log("tbills");
+    console.log(tbills);
     if (tbills === null || tbills === [null]){
         return;
     }
@@ -152,14 +154,9 @@ function removeFromBill(table,product){
 
         }
         setBill(table,[newtable]);
-        console.log("decreased quantity");
-        console.log(getTableBills(table));
         return;
     }
 
-
-    console.log("removed item");
-    console.log(getTableBills(table));
     setBill(table,[]);
 }
 

@@ -40,11 +40,13 @@ undo redo på add item
 
     </script>
 
+<!--<button type="button" id = "payButton" onclick="pay_bill()">Pay</button>-->
 <button type="button" id = "payButton" onclick="pay_bill()">Pay</button>
 <button type="button" id = "undoButton" onclick="undoAddItemToBill()">Undo</button>
 <button type="button" id = "redoButton" onclick="redoAddItemToBill()">Redo</button>
                                                     <!--maybe get t from selector  -->
 <button type="button" id = "removeButton" onclick="removeFromBill(1,190719)">test remove</button>
+<!--
 <div id = "menuTest">
     <button type="button" class = "menuButton" id = "b1" onclick="addItemToBill(1)">Add item 1</button>
     <button type="button" class = "menuButton" id = "b2" onclick="addItemToBill(2)">Add item 2</button>
@@ -57,7 +59,17 @@ undo redo på add item
 
 
 </div>
-<div class = "table" id = t1 onclick = "selectTable('t1')">
+-->
+<div class="multi-selectbox" id = "scrollbox">
+    <button type="button" id = "addButton" onclick="addItemFromButton()">Add item</button>'
+    <button type="button" id = "rmvButton" onclick="removeItemFromBill()">Remove item</button>
+    <!-- you will need to add [multiple="multiple"] as data attr -->
+
+    <select class="selectbox-scrollable" name=""  multiple="multiple"  id="selectbox">
+    </select>
+</div>
+
+<div class = "table" id = "t1" onclick = "selectTable('t1')">
     <span class = "tname">
         Table 1:
 
@@ -150,6 +162,9 @@ undo redo på add item
     </span>
 </div>
 
+<script>
+    languagePrint();
+</script>
 <body>
 </body>
 </html>

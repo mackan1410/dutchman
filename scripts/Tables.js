@@ -10,6 +10,52 @@ To do:
 
  */
 
+const lang = getLanguage();
+const dict = {
+    'tableHeader': {
+        'sv': 'bord',
+        'en' : 'table'
+    },
+    'addButton':{
+        'sv': 'lägg till',
+        'en': 'add'
+    },
+    'removeButton': {
+      'sv':'ta bort',
+      'en': 'remove'
+    },
+    'undoButton': {
+        'sv': 'ångra',
+        'en' : 'undo'
+    },
+    'redoButton': {
+        'sv': 'gör om',
+        'en': 'redo'
+    },
+    'payButton':{
+        'sv':'betala',
+        'en':'pay'
+    },
+    'currency': {
+        'sv': '.kr',
+        'en': '.sek'
+    }
+}
+
+function languagePrint(){
+    document.getElementById('addButton').textContent = dict.addButton[lang];
+    document.getElementById('rmvButton').textContent = dict.removeButton[lang];
+    document.getElementById('payButton').textContent = dict.payButton[lang];
+    document.getElementById('undoButton').textContent = dict.undoButton[lang];
+    document.getElementById('redoButton').textContent = dict.redoButton[lang];
+    var i;
+    for(i = 1;i<=8;i++){
+        document.getElementById('t' + i).getElementsByClassName('tname')[0].innerHTML = dict.tableHeader[lang] + ' ' + i + ':';
+        //var targetDiv = document.getElementById("foo").getElementsByClassName("bar")[0];
+    }
+}
+
+
 
 //Selector: behöver inte vara lista. hade första plats till annat innan.
 //här sparas senast selectad bord
@@ -41,22 +87,73 @@ function fillMenu(){
     menu[7] = [getBeverageFromId("25053"),107];
 }
 
+
+function displayMenuScrollbar(){
+    let items = getItem('beverages');
+
+    $(document).ready(function () {
+        var li = "#selectbox";
+        $(li).empty();
+        items.forEach(function (j) {
+            $(li).append('<option value=' + j.artikelid + '>' + j.namn + '</option>');
+
+        });
+    });
+
+}
+
+function addItemFromButton(){
+    var buttonvalue = document.getElementById('selectbox');
+    var article = buttonvalue.value;
+    console.log(article);
+    /* add item to bill by article id instead of menu*/
+    let bevs = getItem('beverages');
+    let obj = bevs.find(u => u.artikelid === article);
+    addToBill(selector[1].charAt(1),11,obj.artikelid,obj.pris,1);
+    printTable(getItem('table'+ selector[1].charAt(1)));
+
+
+}
+
+function removeItemFromBill(){
+    var buttonvalue = document.getElementById('selectbox');
+    var articleId = buttonvalue.value;
+    let table = getItem('table'+ selector[1][1]);
+    removeFromBill(selector[1][1],articleId);
+    printTable(table);
+}
 fillMenu();
+function addItemToBill(int){
+    let obj = orderList[int-1];
+    document.getElementById(('s' + selector[1].charAt(1))).innerHTML = bills[selector[1].charAt(1)].toString() + 'kr.';
+
+    /*
+    real stuff
+     */
+    addToBill(selector[1].charAt(1),obj.user_id,obj.artikel_id,obj.pris,obj.quantity);
+
+    $(document).ready(function() {
+            var tNr = selector[1].charAt(1);
+            let item = getBeverageFromId(obj.artikel_id);
+            let li = "#li" + selector[1][1];
+            try {
+                let table = getTableBills(parseInt(selector[1][1]));
+                $(li).empty();
+                let sum = 0;
+                table.forEach(function (j) {
+                    $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + '</li>');
+                    sum += parseInt(j.quantity) * parseInt(j.pris);
+                });
+                document.getElementById(('s' + selector[1].charAt(1))).innerHTML =
+                    sum.toString() + 'kr.';
+            }catch(err){
+                console.log(err);
+            }
+        }
+    );
+}
 
 
-
-
-
-
-/* --------
-
-
-KÄNSLIGA TITTARE VARNAS
-
-redoing functions after undo redo is done prob.
-
------------
- */
 
 
 /*
@@ -88,36 +185,6 @@ function pay_bill(){
     document.getElementById(('s' + selector[1].charAt(1))).innerHTML = bills[selector[1].charAt(1)].toString() + 'kr.';
 }
 
-function addItemToBill(int){
-    let obj = orderList[int-1];
-    document.getElementById(('s' + selector[1].charAt(1))).innerHTML = bills[selector[1].charAt(1)].toString() + 'kr.';
-
-    /*
-    real stuff
-     */
-    addToBill(selector[1].charAt(1),obj.user_id,obj.artikel_id,obj.pris,obj.quantity);
-
-    $(document).ready(function() {
-        var tNr = selector[1].charAt(1);
-        let item = getBeverageFromId(obj.artikel_id);
-        let li = "#li" + selector[1][1];
-        try {
-            let table = getTableBills(parseInt(selector[1][1]));
-            $(li).empty();
-            let sum = 0;
-            table.forEach(function (j) {
-                $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + '</li>');
-                sum += parseInt(j.quantity) * parseInt(j.pris);
-            });
-            document.getElementById(('s' + selector[1].charAt(1))).innerHTML =
-                sum.toString() + 'kr.';
-        }catch(err){
-            console.log(err);
-        }
-    }
-    );
-}
-
 
 function printTable(tablebill) {
     let table = tablebill
@@ -135,8 +202,10 @@ function printTable(tablebill) {
             sum += parseInt(j.quantity) * parseInt(j.pris);
         });
         document.getElementById(('s' + selector[1].charAt(1))).innerHTML =
-            sum.toString() + 'kr.';
+            sum.toString() + dict.currency.en;
+
     });
+    console.log(dict.currency.en);
 }
 
 /*
@@ -148,10 +217,6 @@ function getBeverageFromId(id) {
     return bevs.find(u => u.artikelid === id);
 }
 
-
-
-
-/* temporary orders until i know how to fetch prices and User_id*/
 
 let order1 = {
     "table":"1",
@@ -212,5 +277,5 @@ let order8 = {
 
 orderList = [order1,order2,order3,order4,order5,order6,order7,order8];
 
-
+languagePrint();
 

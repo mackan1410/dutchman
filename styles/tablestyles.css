@@ -1,9 +1,7 @@
-
 body {
     background: white;
     /* innan: cornflower blue*/
 }
-
 
 ul, li {
     margin: 5px;
@@ -18,8 +16,6 @@ h1 {
     background-color: #1D2731;
     margin-top: 0;
 }
-
-
 
 .menuButton{
     position: relative;
@@ -225,4 +221,3 @@ h1 {
     width: 200px;
 
 }
-

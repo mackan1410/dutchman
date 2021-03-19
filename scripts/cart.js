@@ -10,39 +10,48 @@ function displayShoppingCart(container) {
   const dict = {
       'itemCategoryHeader': {
         'sv': 'Dryck',
-        'en': 'Beverage'
+        'en': 'Beverage',
+        'hi' : 'पेय पदार्थ'
       } ,
       'priceCategoryHeader': {
         'sv': 'Pris',
-        'en': 'Price'
+        'en': 'Price',
+        'hi' : 'कीमत'
       } ,
       'totalPrice': {
         'sv': 'Totalt pris',
-        'en': 'Total price'
+        'en': 'Total price',
+        'hi' : 'कुल कीमत'
       },
       'btnText': {
         'sv': 'Beställ',
-        'en': 'Order'
+        'en': 'Order',
+        'hi' : 'गण'
       },
       'cartEmptyMessage': {
         'sv': 'Din beställning är tom',
-        'en': 'Your order is empty'
+        'en': 'Your order is empty',
+        'hi' : 'आपका आदेश खाली है'
       },
       'currency': {
         'sv': 'kr',
-        'en': '$'
+        'en': '$',
+        'hi' : '₹'
       },
       'undoBtnText': {
         'sv': 'Ångra?',
-        'en': 'Undo?'
+        'en': 'Undo?',
+        'hi' : 'पूर्ववत करें?'
       },
       'redoBtnText': {
         'sv': 'Ta tillbaka?',
-        'en': 'Redo?'
+        'en': 'Redo?',
+        'hi' : 'फिर से करें?'
       },
       'selectTablePrompt': {
         'sv': 'Välj ditt bord',
-        'en': 'Select your table'
+        'en': 'Select your table',
+        'hi' : 'अपनी तालिका का चयन करें'
       }
   }
 

@@ -3,6 +3,8 @@ body {
     /* innan: cornflower blue*/
 }
 
+
+
 ul, li {
     margin: 5px;
     padding: 0;
@@ -57,21 +59,21 @@ h1 {
 }
 
 .menuButton{
-    position: relative;
+    position: absolute;
     left: 1400px;
 }
 #undoButton{
-    position:relative;
+    position:absolute;
     top: 570px;
     left: 1450px;
 }
 #redoButton{
-    position:relative;
+    position:absolute;
     top: 570px;
     left: 1500px;
 }
 #removeButton{
-    position:relative;
+    position:absolute;
     top: 570px;
     left: 1500px;
 }
@@ -263,5 +265,283 @@ h1 {
     right: 1500px;
     height:200px;
     width: 200px;
+
+}
+
+
+/*
+    IPAD ETC
+ */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    ul, li {
+        margin: 5px;
+        padding: 0;
+    }
+
+
+    /*
+    .multi-selectbox{
+        position:relative;
+
+    }
+    */
+
+    #payButton{
+        position: absolute;
+        left: 720px;
+        top: 570px;
+        font-size: 26px;
+    }
+    #addButton{
+        position: absolute;
+        top: 820px;
+        left:780px;
+        font-size: 26px;
+    }
+    #rmvButton{
+        position: absolute;
+        top: 750px;
+        left: 600px;
+    }
+
+
+    #scrollbox{
+        top: 300px;
+        left:500px;
+    }
+
+
+    #selectbox{
+        position: absolute;
+        overflow-y:scroll;
+        padding:0 7px 0 0;
+        width: calc(25% + 17px);
+        height:25%;
+        border:0;
+        font-size: 24px;
+        top: 700px;
+        left: 500px;
+
+    }
+
+    .menuButton{
+        position: relative;
+        left: 500px;
+        top: 500px;
+    }
+    #undoButton{
+        position:absolute;
+        top: 570px;
+        left: 500px;
+        font-size: 26px;
+    }
+    #redoButton{
+        position:absolute;
+        top: 570px;
+        left: 600px;
+        font-size: 26px;
+    }
+    #removeButton{
+        position:relative;
+        top: 750px;
+        left: 600px;
+        font-size: 20px;
+    }
+    #b1{
+        position:absolute;
+
+        top: 600px;
+    }
+    #b2{
+        position: absolute;
+        top: 630px;
+    }
+    #b3{
+        position: absolute;
+        top: 660px;
+    }
+    #b4{
+        position: absolute;
+        top: 690px;
+    }
+    #b5{
+        position: absolute;
+        top: 720px;
+    }
+    #b6{
+        position: absolute;
+        top: 750px;
+    }
+    #b7{
+        position: absolute;
+        top: 780px;
+    }
+    #b8{
+        position: absolute;
+        top: 810px;
+    }
+
+
+    .table{
+        position: relative;
+        border: black solid 2px;
+        border-radius: 50px;
+        background: lavender;
+
+    }
+
+
+    .tname{
+        position: absolute;
+        top: 0px;
+        right: 80px;
+    }
+    .sum {
+        position: absolute;
+        top: 30px;
+        right: 50px;
+    }
+    .tbill{
+        position: relative;
+        border: black solid 2px;
+        border-radius: 10px;
+        background: gainsboro;
+        left: 0px;
+        top: 50px;
+        height:200px;
+        width: 140px;
+
+    }
+
+    /*
+    #tbo{
+        position: absolute;
+        height: 200px;
+    }
+    */
+
+    #tb1{
+        position: absolute;
+        height:200px;
+    }
+    #tb2{
+        position: absolute;
+        height:200px;
+    }
+    #tb3{
+        position: absolute;
+        z-index: 2;
+        height:200px;
+    }
+    #tb4{
+        position: absolute;
+        z-index: 2;
+        height:200px;
+
+    }
+    #tb5{
+        position: absolute;
+
+        z-index: 2;
+        height:200px;
+
+    }
+    #tb6{
+        position: absolute;
+        z-index: 2;
+        height:200px;
+
+    }
+    #tb7{
+        position: absolute;
+        z-index: 2;
+        height:200px;
+
+    }
+    #tb8{
+        position: absolute;
+        z-index: 2;
+        height:200px;
+
+    }
+
+    #t0{
+        position: absolute;
+        top: 200px;
+        left: 100px;
+        height:200px;
+        width: 200px;
+        border-radius: 5px;
+    }
+
+
+    #t1{
+        position: absolute;
+        top: 130px;
+        left: 100px;
+        height:50px;
+        width: 150px;
+
+    }
+    #t2{
+        position: absolute;
+        top: 130px;
+        left: 300px;
+        height:50px;
+        width: 150px;
+
+    }
+    #t3{
+        position: absolute;
+        top: 400px;
+        left: 100px;
+        height:50px;
+        width: 150px;
+
+    }
+    #t4{
+        position: absolute;
+        top: 400px;
+        left: 300px;
+        height:50px;
+        width: 150px;
+
+    }
+    #t5{
+        position: absolute;
+        top: 670px;
+        left: 100px;
+        height:50px;
+        width: 150px;
+
+    }
+    #t6{
+        position: absolute;
+        top: 670px;
+        left: 300px;
+        height:50px;
+        width: 150px;
+
+    }
+    #t7{
+        position: absolute;
+        top: 940px;
+        left: 100px;
+        height:50px;
+        width: 150px;
+    }
+    #t8{
+        position: absolute;
+        top: 940px;
+        left: 300px;
+        height:50px;
+        width: 150px;
+
+    }
+
+
+
+
 
 }

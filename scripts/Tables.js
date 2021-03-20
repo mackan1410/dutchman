@@ -95,32 +95,58 @@ function displayMenuScrollbar(){
         var li = "#selectbox";
         $(li).empty();
         items.forEach(function (j) {
-            $(li).append('<option value=' + j.artikelid + '>' + j.namn + '</option>');
+            $(li).append('<option value=' + j.artikelid + '>' + j.namn + ' ' + ' ' + j.stock + '</option>');
 
         });
     });
 
 }
 
-function addItemFromButton(){
-    var buttonvalue = document.getElementById('selectbox');
-    var article = buttonvalue.value;
-    console.log(article);
-    /* add item to bill by article id instead of menu*/
-    let bevs = getItem('beverages');
-    let obj = bevs.find(u => u.artikelid === article);
-    addToBill(selector[1].charAt(1),11,obj.artikelid,obj.pris,1);
-    printTable(getItem('table'+ selector[1].charAt(1)));
-
+function itemCount() {
+    var sum = 0;
+    try {
+        var table = getItem('table' + selector[1][1]);
+        table.forEach(function (j) {
+            sum += parseInt(j.quantity);
+        });
+    }catch(err){
+    }
+    console.log("sum");
+    console.log(sum);
+    return sum<10;
 
 }
 
-function removeItemFromBill(){
+function checkStock(articleId){
+    let bev = getBeverageFromId(articleId);
+    console.log("stock");
+    console.log(bev.stock);
+    return bev.stock > 0;
+}
+
+function addItemFromButton() {
     var buttonvalue = document.getElementById('selectbox');
-    var articleId = buttonvalue.value;
-    let table = getItem('table'+ selector[1][1]);
-    removeFromBill(selector[1][1],articleId);
-    printTable(table);
+    var article = buttonvalue.value;
+    console.log(article);
+    if (checkStock(article) && itemCount()) {
+        console.log("added");
+        /* add item to bill by article id instead of menu*/
+        let bevs = getItem('beverages');
+        let obj = bevs.find(u => u.artikelid === article);
+        addToBill(selector[1].charAt(1), 11, obj.artikelid, obj.pris, 1);
+        printTable(getItem('table' + selector[1].charAt(1)));
+
+    }
+}
+    function removeItemFromBill() {
+        var buttonvalue = document.getElementById('selectbox');
+        var articleId = buttonvalue.value;
+        let table = getItem('table' + selector[1][1]);
+        removeFromBill(selector[1][1], articleId);
+        printTable(table);
+
+
+
 }
 fillMenu();
 function addItemToBill(int){
@@ -198,7 +224,8 @@ function printTable(tablebill) {
         $(li).empty();
         let sum = 0;
         table.forEach(function (j) {
-            $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + '</li>');
+            $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + " " + getBeverageFromId(j.artikel_id).stock +
+            '</li>');
             sum += parseInt(j.quantity) * parseInt(j.pris);
         });
         document.getElementById(('s' + selector[1].charAt(1))).innerHTML =
@@ -277,5 +304,4 @@ let order8 = {
 
 orderList = [order1,order2,order3,order4,order5,order6,order7,order8];
 
-languagePrint();
 

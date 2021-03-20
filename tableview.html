@@ -1,13 +1,11 @@
 <!--
 
-TODO:
-fixa så navbar bara syns för employees
-undo redo på add item
 
 -->
 
 <!DOCTYPE html>
 <html lang="en">
+
  
 <head>
 
@@ -37,15 +35,13 @@ undo redo på add item
         })
         }
 
-
     </script>
+<button type="button" id = "payButton" onclick="pay_bill()"></button>
+<button type="button" id = "undoButton" onclick="undoAddItemToBill()"></button>
+<button type="button" id = "redoButton" onclick="redoAddItemToBill()"></button>
 
-<!--<button type="button" id = "payButton" onclick="pay_bill()">Pay</button>-->
-<button type="button" id = "payButton" onclick="pay_bill()">Pay</button>
-<button type="button" id = "undoButton" onclick="undoAddItemToBill()">Undo</button>
-<button type="button" id = "redoButton" onclick="redoAddItemToBill()">Redo</button>
-                                                    <!--maybe get t from selector  -->
-<button type="button" id = "removeButton" onclick="removeFromBill(1,190719)">test remove</button>
+<!--button type="button" id = "removeButton" onclick="removeFromBill(1,190719)">test remove</button>
+-->
 <!--
 <div id = "menuTest">
     <button type="button" class = "menuButton" id = "b1" onclick="addItemToBill(1)">Add item 1</button>
@@ -61,24 +57,18 @@ undo redo på add item
 </div>
 -->
 <div class="multi-selectbox" id = "scrollbox">
-    <button type="button" id = "addButton" onclick="addItemFromButton()">Add item</button>'
-    <button type="button" id = "rmvButton" onclick="removeItemFromBill()">Remove item</button>
+    <button type="button" id = "addButton" onclick="addItemFromButton()"></button>
+    <button type="button" id = "rmvButton" onclick="removeItemFromBill()"></button>
     <!-- you will need to add [multiple="multiple"] as data attr -->
-
-    <select class="selectbox-scrollable" name=""  multiple="multiple"  id="selectbox">
-    </select>
+    <select class="selectbox-scrollable" name=""  multiple="multiple"  id="selectbox"></select>
 </div>
-
 <div class = "table" id = "t1" onclick = "selectTable('t1')">
     <span class = "tname">
         Table 1:
-
     </span>
     <div class = "tbill" id = tb1>
         <ul class = "list1" style="list-style-type:none" id = "li1"></ul>
     </div>
-
-
     <span class = "sum" id = s1>
         0kr.
     </span>
@@ -90,7 +80,6 @@ undo redo på add item
     <div class = "tbill" id = tb2>
         <ul class = "list1" style="list-style-type:none" id = "li2"></ul>
     </div>
-
     <span class = "sum" id = s2>
         0kr.
     </span>

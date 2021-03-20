@@ -10,6 +10,7 @@ To do:
  */
 
 displayMenuScrollbar();
+languagePrint();
 setCookie('billUndoRedo',JSON.stringify(order1));
 var x = new undoRedoManager();
 function initTables(tablebills){

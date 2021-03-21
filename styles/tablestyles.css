@@ -27,20 +27,20 @@ h1 {
 
 #payButton{
     position: absolute;
-    left: 1500px;
-    top: 400px;
+    left: 550px;
+    top: 850px;
     font-size: 22px;
 }
 #addButton{
     position: absolute;
-    top: 650px;
-    left: 1700px;
+    top: 1000px;
+    left: 790px;
     font-size: 22px;
 }
 #rmvButton{
     position: absolute;
-    top: 700px;
-    left: 1700px;
+    top: 950px;
+    left: 790px;
     font-size: 22px;
 }
 
@@ -56,8 +56,8 @@ h1 {
     height:20%;
     border:0;
     font-size: 22px;
-    top: 600px;
-    left: 1400px;
+    top: 900px;
+    left: 500px;
 
 }
 
@@ -67,21 +67,28 @@ h1 {
 }
 #undoButton{
     position:absolute;
-    top: 500px;
-    left: 1400px;
+    top: 950px;
+    left: 350px;
     font-size: 22px;
 }
 #redoButton{
     position:absolute;
-    top: 500px;
-    left: 1500px;
+    top: 1000px;
+    left: 350px;
     font-size: 22px;
 }
 #removeButton{
     position:absolute;
-    top: 570px;
-    left: 1500px;
+    top: 1000px;
+    left: 700px;
 }
+#b0{
+    position:absolute;
+
+    top: 600px;
+    left: 1400px;
+}
+
 #b1{
     position:absolute;
 
@@ -142,70 +149,83 @@ h1 {
     background: gainsboro;
     left: 150px;
     top: 50px;
-    height:200px;
+    height:230px;
     width: 140px;
 
 }
 
-/*
-#tbo{
-    position: absolute;
-    height: 200px;
+#tn0{
+    top: 0px;
 }
-*/
+
+#s0{
+    top:50px;
+    left: 50px
+}
+#tb0{
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    height:300px;
+    width: 140px;
+}
+
 
 #tb1{
     position: absolute;
-    height:200px;
+    height:230px;
 }
 #tb2{
     position: absolute;
-    height:200px;
+    height:230px;
 }
 #tb3{
     position: absolute;
     z-index: 2;
-    height:200px;
+    height:230px;
 }
 #tb4{
     position: absolute;
     z-index: 2;
-    height:200px;
+    height:230px;
 
 }
 #tb5{
     position: absolute;
 
     z-index: 2;
-    height:200px;
+    height:230px;
 
 }
 #tb6{
     position: absolute;
     z-index: 2;
-    height:200px;
+    height:230px;
 
 }
 #tb7{
     position: absolute;
     z-index: 2;
-    height:200px;
+    height:230px;
 
 }
 #tb8{
     position: absolute;
     z-index: 2;
-    height:200px;
+    height:230px;
 
 }
 
 #t0{
     position: absolute;
-    top: 200px;
+    border: black solid 2px;
+    border-radius: 20px;
+    background: lavender;
+    top: 400px;
     left: 1400px;
-    height:200px;
-    width: 200px;
-    border-radius: 5px;
+    height:100px;
+    width: 150px;
+
 }
 
 
@@ -283,6 +303,25 @@ h1 {
         margin: 5px;
         padding: 0;
     }
+    #t0{
+        position: absolute;
+        border: black solid 2px;
+        border-radius: 20px;
+        background: lavender;
+        top: 500px;
+        left: 1400px;
+        height:100px;
+        width: 150px;
+
+    }
+    #tn0{
+        top: 0px;
+    }
+
+    #s0{
+        top:25px;
+        left: 70px
+    }
 
 
     /*
@@ -291,11 +330,17 @@ h1 {
 
     }
     */
+    #b0{
+        position:absolute;
+
+        top: 700px;
+        left: 1400px;
+    }
 
     #payButton{
         position: absolute;
         left: 720px;
-        top: 570px;
+        top: 1050px;
         font-size: 26px;
     }
     #addButton{
@@ -306,8 +351,9 @@ h1 {
     }
     #rmvButton{
         position: absolute;
-        top: 750px;
-        left: 600px;
+        top: 870px;
+        left: 780px;
+        font-size: 26px;
     }
 
 
@@ -337,13 +383,13 @@ h1 {
     }
     #undoButton{
         position:absolute;
-        top: 570px;
+        top: 1050px;
         left: 500px;
         font-size: 26px;
     }
     #redoButton{
         position:absolute;
-        top: 570px;
+        top: 1050px;
         left: 600px;
         font-size: 26px;
     }
@@ -425,6 +471,13 @@ h1 {
         height: 200px;
     }
     */
+    #tb0{
+        position: absolute;
+        top: 50px;
+        left: 0px;
+        height:300px;
+        width: 140px;
+    }
 
     #tb1{
         position: absolute;
@@ -474,10 +527,10 @@ h1 {
     #t0{
         position: absolute;
         top: 200px;
-        left: 100px;
-        height:200px;
-        width: 200px;
-        border-radius: 5px;
+        left: 600px;
+        height:50px;
+        width: 150px;
+        border-radius: 20px;
     }
 
 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Main view</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+	<link rel="stylesheet" href="styles/main.css"/>
+	<link rel="stylesheet" href="styles/navbar.css"/>
+  <link rel="stylesheet" href="styles/mainView.css"/>
+</head>
+
+<body>
+
+  <div id="navbar-container"></div>
+	<div id="content-container"></div>
+
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script type="text/javascript" src="scripts/undoRedo.js"></script>
+	<script type="text/javascript" src="scripts/views/navbarView.js"></script>
+  <script type="text/javascript" src="scripts/controllers/navbarController.js"></script>
+	<script type="text/javascript" src="scripts/views/menuView.js"></script>
+  <script type="text/javascript" src="scripts/controllers/menuController.js"></script>
+  <script type="text/javascript" src="scripts/models/models.js"></script>
+	<script>
+		window.onload = function() {
+			new localStorageModel().initData(function() {
+				let navModel = new navbarModel();
+				let navView = new navbarView($('#navbar-container'));
+				let navController = new navbarController(navView, navModel);
+				navController.initialize();
+				navController.displayNavbar();
+
+        let model = new menuModel();
+				let view = new menuView($('#content-container'));
+				let controller = new menuController(view, model);
+        controller.initialize();
+        controller.displayMenu();
+			})
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Cart</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+	<link rel="stylesheet" href="styles/main.css"/>
+	<link rel="stylesheet" href="styles/navbar.css"/>
+	<link rel="stylesheet" href="styles/cart.css"/>
+
+</head>
+
+<body>
+
+	<div id="navbar-container"></div>
+  <div id="cart-container"></div>
+
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="scripts/undoRedo.js"></script>
+	<script type="text/javascript" src="scripts/views/navbarView.js"></script>
+  <script type="text/javascript" src="scripts/controllers/navbarController.js"></script>
+	<script type="text/javascript" src="scripts/controllers/cartController.js"></script>
+  <script type="text/javascript" src="scripts/views/cartView.js"></script>
+	<script type="text/javascript" src="scripts/models/models.js"></script>
+
+	<script type="text/javascript">
+		window.onload = function() {
+      if(!(new loginModel().loggedIn())) {
+        window.location.replace('./');
+        return null;
+      }
+
+			new localStorageModel().initData(function(){
+				let navModel = new navbarModel();
+				let navView = new navbarView($('#navbar-container'));
+				let navController = new navbarController(navView, navModel);
+				navController.initialize();
+				navController.displayNavbar();
+
+        let model = new cartModel();
+        let view = new cartView($('#cart-container'));
+        let controller = new cartController(view, model);
+        controller.initialize();
+				controller.displayCart();
+			});
+		}
+
+	</script>
+</body>
+</html>

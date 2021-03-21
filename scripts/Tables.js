@@ -10,6 +10,12 @@ To do:
 
  */
 
+/*
+    lang: feth current language from localstorage.
+
+    dict: store necessary strings for internationalization
+ */
+
 const lang = getLanguage();
 const dict = {
     'tableHeader': {
@@ -42,6 +48,9 @@ const dict = {
     }
 }
 
+/*
+    print all text for table view page
+ */
 function languagePrint(){
     document.getElementById('addButton').textContent = dict.addButton[lang];
     document.getElementById('rmvButton').textContent = dict.removeButton[lang];
@@ -49,9 +58,9 @@ function languagePrint(){
     document.getElementById('undoButton').textContent = dict.undoButton[lang];
     document.getElementById('redoButton').textContent = dict.redoButton[lang];
     var i;
+    //loop through all tables
     for(i = 1;i<=8;i++){
         document.getElementById('t' + i).getElementsByClassName('tname')[0].innerHTML = dict.tableHeader[lang] + ' ' + i + ':';
-        //var targetDiv = document.getElementById("foo").getElementsByClassName("bar")[0];
     }
 }
 
@@ -61,14 +70,6 @@ function languagePrint(){
 //här sparas senast selectad bord
 
 var selector = ['','t1'];
-
-// bills: sparar totalsumman. Inte integrerad med tablebills. kommer räknas ut bordsvis
-//från localstorage
-bills = [0,0,0,0,0,0,0,0];
-
-//listorna innehåller listor med [Objekt(dricka),pris]. fixas i localstorage
-tablebills = [[],[],[],[],[],[],[],[]];
-
 //här laddas menyn från 'beverages' i localstorage genom fillmenu.
 // menu[2][0] ger objekt och menu[2][1] ger pris för bord 2
 menu = [[],[],[],[],[],[],[],[]];
@@ -87,7 +88,9 @@ function fillMenu(){
     menu[7] = [getBeverageFromId("25053"),107];
 }
 
-
+/*
+    Display the scrollbar menu. fetches menu from localstorage
+ */
 function displayMenuScrollbar(){
     let items = getItem('beverages');
 
@@ -102,6 +105,9 @@ function displayMenuScrollbar(){
 
 }
 
+/*
+    counts number of items on table bill. Used to prevent more orders when table full
+ */
 function itemCount() {
     var sum = 0;
     try {
@@ -117,6 +123,9 @@ function itemCount() {
 
 }
 
+/*
+    check the quantities of given item in localstorage. Also used to check if further additions can be made
+ */
 function checkStock(articleId){
     let bev = getBeverageFromId(articleId);
     console.log("stock");
@@ -124,6 +133,9 @@ function checkStock(articleId){
     return bev.stock > 0;
 }
 
+/*
+    adds selected item to selected table. Items from scroll-menu
+ */
 function addItemFromButton() {
     var buttonvalue = document.getElementById('selectbox');
     var article = buttonvalue.value;
@@ -138,7 +150,10 @@ function addItemFromButton() {
 
     }
 }
-    function removeItemFromBill() {
+    /*
+        removes selected item in dropdown menu from selected table in tableview
+     */
+function removeItemFromBill() {
         var buttonvalue = document.getElementById('selectbox');
         var articleId = buttonvalue.value;
         let table = getItem('table' + selector[1][1]);
@@ -167,7 +182,7 @@ function addItemToBill(int){
                 $(li).empty();
                 let sum = 0;
                 table.forEach(function (j) {
-                    $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + '</li>');
+                    $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn  + " " + j.quantity + '</li>');
                     sum += parseInt(j.quantity) * parseInt(j.pris);
                 });
                 document.getElementById(('s' + selector[1].charAt(1))).innerHTML =
@@ -183,7 +198,7 @@ function addItemToBill(int){
 
 
 /*
-Highlightar senast klickade bord. Återställer färg för den förra.
+    Highlightar senast klickade bord. Återställer färg för den förra. Fixa css.
  */
 function selectTable(tNo){
     let selectedTable = document.getElementById(tNo);
@@ -196,10 +211,10 @@ function selectTable(tNo){
     selector[1] = tNo
 }
 
+/*
+    fetch the selected tables bill and store in localstorage.
+ */
 function pay_bill(){
-
-    //nollställ summan
-    //get tab:
     let order =  getTableBills(parseInt(selector[1].charAt(1)));
     addPayment(order);
     clearTable(parseInt(selector[1].charAt(1)));
@@ -212,6 +227,9 @@ function pay_bill(){
 }
 
 
+/*
+    function to print a table when given a bill.
+ */
 function printTable(tablebill) {
     let table = tablebill
     $(document).ready(function () {
@@ -222,17 +240,17 @@ function printTable(tablebill) {
             /* TODO: should get correct table instead of selector */
             var li = "#li" + selector[1][1];}
         $(li).empty();
-        let sum = 0;
+        var sum = 0;
+        var artikel = "";
         table.forEach(function (j) {
             $(li).append('<li>' + getBeverageFromId(j.artikel_id).namn + " " + j.quantity + " " + getBeverageFromId(j.artikel_id).stock +
             '</li>');
-            sum += parseInt(j.quantity) * parseInt(j.pris);
+            artikel = getBeverageFromId(j.artikel_id).prisinklmoms;
+            sum += parseInt(j.quantity) * parseInt(artikel);
         });
-        document.getElementById(('s' + selector[1].charAt(1))).innerHTML =
-            sum.toString() + dict.currency.en;
+        document.getElementById(('s' + selector[1].charAt(1))).innerHTML= sum.toString() + dict.currency.en;
 
     });
-    console.log(dict.currency.en);
 }
 
 /*
@@ -244,6 +262,9 @@ function getBeverageFromId(id) {
     return bevs.find(u => u.artikelid === id);
 }
 
+/*
+    just example orders. Going to remove
+ */
 
 let order1 = {
     "table":"1",

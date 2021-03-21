@@ -28,17 +28,20 @@ h1 {
 #payButton{
     position: absolute;
     left: 1500px;
-    top: 700px;
+    top: 400px;
+    font-size: 22px;
 }
 #addButton{
     position: absolute;
-    top: 900px;
-    left: 1050px;
+    top: 650px;
+    left: 1700px;
+    font-size: 22px;
 }
 #rmvButton{
     position: absolute;
-    top: 930px;
-    left: 1050px;
+    top: 700px;
+    left: 1700px;
+    font-size: 22px;
 }
 
 
@@ -50,11 +53,11 @@ h1 {
     overflow-y:scroll;
     padding:0 7px 0 0;
     width: calc(10% + 17px);
-    height:10%;
+    height:20%;
     border:0;
-    font-size: 20px;
-    top: 800px;
-    left: 800px;
+    font-size: 22px;
+    top: 600px;
+    left: 1400px;
 
 }
 
@@ -64,13 +67,15 @@ h1 {
 }
 #undoButton{
     position:absolute;
-    top: 570px;
-    left: 1450px;
+    top: 500px;
+    left: 1400px;
+    font-size: 22px;
 }
 #redoButton{
     position:absolute;
-    top: 570px;
+    top: 500px;
     left: 1500px;
+    font-size: 22px;
 }
 #removeButton{
     position:absolute;
@@ -207,7 +212,7 @@ h1 {
 #t1{
     position: absolute;
     top: 200px;
-    right: 600px;
+    left: 1050px;
     height:200px;
     width: 200px;
 
@@ -215,7 +220,7 @@ h1 {
 #t2{
     position: absolute;
     top: 500px;
-    right: 600px;
+    left: 1050px;
     height:200px;
     width: 200px;
 
@@ -223,7 +228,7 @@ h1 {
 #t3{
     position: absolute;
     top: 200px;
-    right: 900px;
+    left: 750px;
     height:200px;
     width: 200px;
 
@@ -231,7 +236,7 @@ h1 {
 #t4{
     position: absolute;
     top: 500px;
-    right: 900px;
+    left: 750px;
     height:200px;
     width: 200px;
 
@@ -239,7 +244,7 @@ h1 {
 #t5{
     position: absolute;
     top: 200px;
-    right: 1200px;
+    left:450px;
     height:200px;
     width: 200px;
 
@@ -247,7 +252,7 @@ h1 {
 #t6{
     position: absolute;
     top: 500px;
-    right: 1200px;
+    left:450px;
     height:200px;
     width: 200px;
 
@@ -255,14 +260,14 @@ h1 {
 #t7{
     position: absolute;
     top: 200px;
-    right: 1500px;
+    left: 150px;
     height:200px;
     width: 200px;
 }
 #t8{
     position: absolute;
     top: 500px;
-    right: 1500px;
+    left: 150px;
     height:200px;
     width: 200px;
 

@@ -10,7 +10,6 @@ To do:
  */
 
 displayMenuScrollbar();
-languagePrint();
 setCookie('billUndoRedo',JSON.stringify(order1));
 var x = new undoRedoManager();
 function initTables(tablebills){
@@ -28,10 +27,17 @@ function initTables(tablebills){
 
 }
 
+/*
+    clear table when given table number. F
+ */
 function clearTable(tNr) {
     localStorage.removeItem('table' + tNr.toString());
     setItem('table' + tNr.toString(), []);
 }
+
+/*
+    adds item to bill in localstorage. Also adds item to undo-stack. Extensive error checking for null and undefined.
+ */
 function addToBill(table,uId,product,price,qt){
         let newtab = {'table':table,
                   'user_id':uId,
@@ -67,66 +73,10 @@ function addToBill(table,uId,product,price,qt){
 
 
 }
-function removeFromBill2(table,product){
-    let tbills = getTableBills(table);
-        //console.log("tbills::");
-        //console.log(tbills);
-        let newtable = tbills.find(u => u.artikel_id === product);
-        //tbills.findIndex(product)
-        if (newtable != undefined){
-            if (newtable.quantity < 2) {
-            var filtered = tbills.filter(function (el) {
-                return el.artikel_id != product;
-            });
-            newtable = filtered;
 
-        }else{
-                let qInt = parseInt(newtable.quantity);
-                qInt -= 1;
-
-
-        }}
-
-    if (filtered != undefined) {
-        var filtered1 = filtered.filter(function (el) {
-            return el != null;
-        });
-    }
-    console.log("asd");
-    console.log(getTableBills(table));
-    setBill(table,[newtable]);
-}
-function removeFromBill2(table,product){
-    let tbills = getTableBills(table);
-    //console.log("tbills::");
-    //console.log(tbills);
-    let newtable = tbills.find(u => u.artikel_id === product);
-    //tbills.findIndex(product)
-    if (newtable != undefined){
-        if (newtable.quantity < 2) {
-            var filtered = tbills.filter(function (el) {
-                return el.artikel_id != product;
-            });
-            newtable = filtered;
-
-        }else{
-            let qInt = parseInt(newtable.quantity);
-            qInt -= 1;
-            newtable.quantity = qInt.toString();
-
-
-        }}
-
-    if (filtered != undefined) {
-        var filtered1 = filtered.filter(function (el) {
-            return el != null;
-        });
-        setBill(table,[newtable]);
-    }
-    console.log("asd");
-    console.log(getTableBills(table));
-    setBill(table,[]);
-}
+/*
+    Removes item from bill. Fetch from localstorage, decrease quantity and store again. input table number and product ID.
+ */
 function removeFromBill(table,product){
     let tbills = getItem('table' + table);
     console.log("tbills");
@@ -162,20 +112,24 @@ function removeFromBill(table,product){
 }
 
 
+/*
+    store bill in localstorage
+ */
 function setBill(tNr,bill){
     setItem('table' + tNr,JSON.stringify(bill));
 }
 
-function getTableBills2(tNr){
-    return getItem('table'+ tNr.toString());
-}
-
-
+/*
+    fetch tablebill from localstorage. Input is table number.
+ */
 function getTableBills(tNr){
     return getItem('table' + tNr.toString());
 
 }
 
+/*
+    fetch bills from each table. temporarily print each table.
+ */
 function printbills(){
     console.log("table 1")
     console.log(getTableBills(1));
@@ -201,6 +155,9 @@ function printbills(){
  */
 
 
+/*
+    used inside AddtoBill. Pushes current table state into undo-managers undostack. Input is table number
+ */
 function addBillToUndo(tNr){
     //setCookie('billUndoRedo',[]);
     let table = getTableBills(tNr);
@@ -214,6 +171,9 @@ function addBillToUndo(tNr){
     console.log(getCookie('billUndoRedo'));
 }
 
+/*
+    pushes table and funciton onto redo-stack. called for in undo-function.
+ */
 function undoAddItemToBill(){
     //
     let savedUndoRedo = JSON.parse(getCookie('billUndoRedo'));
@@ -265,36 +225,6 @@ function redoAddItemToBill(){
     console.log(getCookie('billUndoRedo'));
 }
 
-
-//table to push into example stack before example
-
-
-
-/*
-let table = getTableBills(1);
-//new undomanager, always do
-var undoRedo = new undoRedoManager();
-//push table to undostack
-undoRedo.pushUndo(table);
-//store undoredostack under billundoredo
-setCookie('billUndoRedo',JSON.stringify(undoRedo))
-console.log(getCookie('billUndoRedo'));
-//get the current stack
-let savedUndoRedo = JSON.parse(getCookie('billUndoRedo'));
-//new manager, get whole stacks
-var undoRedo = new undoRedoManager(savedUndoRedo.undoStack,savedUndoRedo.redoStack);
-
-//add stuff to table
-addToBill(order4.table,order4.user_id,order4.arikel_id,order4.pris,order4.quantity);
-addToBill(order3.table,order3.user_id,order3.arikel_id,order3.pris,order3.quantity);
-//push to undo stack
-undoRedo.pushUndo(table);
-//store undo stack
-setCookie('billUndoRedo',JSON.stringify(undoRedo))
-
-//example print
-console.log(getCookie('billUndoRedo'));
-*/
 
 
 

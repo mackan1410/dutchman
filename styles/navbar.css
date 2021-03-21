@@ -72,6 +72,9 @@ a{ text-decoration: none;}
 
 .collapse-navbar-btn .fa-times{display: none;}
 
+#manager-sec{
+  color: red;
+}
 /*
   Media queries for smaller devices
 */

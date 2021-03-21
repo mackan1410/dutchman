@@ -26,11 +26,7 @@ button {
     background-color: #1D2731;
 }
 
-#switch {
-    margin: -140px 850px 75px;
-    position: absolute;
 
-}
 section {
     margin: 0;
     position: absolute;
@@ -40,13 +36,21 @@ section {
     left: 30%;
 }
 
-#eng {
-    background-image: url("../images/pexels-photo-3330167.jpg");
+#btncontainer {
+    position: fixed;
+    margin-bottom: 1px;
+    margin-left: 70vw ;
+    bottom: 0px;
 }
-#swe {
-    background-image: url("../images/pexels-photo-3330167.jpg");
-}
-#hin {
-    background-image: url("../images/pexels-photo-3330167.jpg");
+
+@media only screen and (max-width: 1000px) {
+   button{
+       width: 70vw;
+       height: 12vh;
+       font-size: 3rem;
+   }
+    section{
+        left: 15vw;
+    }
 }
 

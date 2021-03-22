@@ -941,7 +941,6 @@ function navbarModel() {
     }
   }
 
-
   this.getAll = function() {
     let userFuncs = new userModel();
     let loginFuncs = new loginModel();

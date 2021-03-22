@@ -1,24 +1,23 @@
 <!--
 
-TODO:
-fixa så navbar bara syns för employees
-undo redo på add item
 
 -->
 
 <!DOCTYPE html>
 <html lang="en">
+
  
 <head>
 
     <meta charset="UTF-8">
     <title>The flying dutchman</title>
     <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="scripts/cookies.js"></script>
+    <script type="text/javascript" src="scripts/undoRedo.js"></script>
     <script type="text/javascript" src="scripts/ModelFunctions.js"></script>
     <script type="text/javascript" src="scripts/Tables.js"></script>
     <script type="text/javascript" src="scripts/navbar.js"></script>
     <script type="text/javascript" src="scripts/login.js"></script>
-    <script type="text/javascript" src="scripts/cookies.js"></script>
     <script type="text/javascript" src="scripts/PaymentFunctions.js"></script>
     <script type="text/javascript" src="scripts/OrderFunctions.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/tablestyles.css">
@@ -36,34 +35,39 @@ undo redo på add item
         })
         }
 
-
     </script>
+<button type="button" id = "payButton" onclick="pay_bill()"></button>
+<button type="button" id = "undoButton" onclick="undoAddItemToBill()"></button>
+<button type="button" id = "redoButton" onclick="redoAddItemToBill()"></button>
 
-<button type="button" id = "payButton" onclick="pay_bill()">Pay</button>
-
-<div id = "menuTest">
-    <button type="button" class = "menuButton" id = "b1" onclick="addItemToBill(1)">Add item 1</button>
-    <button type="button" class = "menuButton" id = "b2" onclick="addItemToBill(2)">Add item 2</button>
-    <button type="button" class = "menuButton" id = "b3" onclick="addItemToBill(3)">Add item 3</button>
-    <button type="button" class = "menuButton" id = "b4" onclick="addItemToBill(4)">Add item 4</button>
-    <button type="button" class = "menuButton" id = "b5" onclick="addItemToBill(5)">Add item 5</button>
-    <button type="button" class = "menuButton" id = "b6" onclick="addItemToBill(6)">Add item 6</button>
-    <button type="button" class = "menuButton" id = "b7" onclick="addItemToBill(7)">Add item 7</button>
-    <button type="button" class = "menuButton" id = "b8" onclick="addItemToBill(8)">Add item 8</button>
-
-
+<div class="multi-selectbox" id = "scrollbox">
+    <button type="button" id = "addButton" onclick="addItemFromButton()"></button>
+    <button type="button" id = "rmvButton" onclick="removeItemFromBill()"></button>
+    <!-- you will need to add [multiple="multiple"] as data attr -->
+    <select class="selectbox-scrollable" name=""  multiple="multiple"  id="selectbox"></select>
 </div>
-<div class = "table" id = t1 onclick = "selectTable('t1')">
+
+<div id = "t0" onclick = "selectTable('t0')">
+    <span class = "tname" id="tn0">
+        bar:
+    </span>
+    <div class = "tbill" id = tb0>
+        <ul class = "list0" style="list-style-type:none" id = "li0"></ul>
+    </div>
+    <span class = "sum" id = "s0">
+        0kr.
+    </span>
+</div>
+
+
+<div class = "table" id = "t1" onclick = "selectTable('t1')">
     <span class = "tname">
         Table 1:
-
     </span>
     <div class = "tbill" id = tb1>
         <ul class = "list1" style="list-style-type:none" id = "li1"></ul>
     </div>
-
-
-    <span class = "sum" id = s1>
+    <span class = "sum" id = "s1">
         0kr.
     </span>
 </div>
@@ -74,8 +78,7 @@ undo redo på add item
     <div class = "tbill" id = tb2>
         <ul class = "list1" style="list-style-type:none" id = "li2"></ul>
     </div>
-
-    <span class = "sum" id = s2>
+    <span class = "sum" id = "s2">
         0kr.
     </span>
 </div>
@@ -146,6 +149,9 @@ undo redo på add item
     </span>
 </div>
 
+<script>
+    languagePrint();
+</script>
 <body>
 </body>
 </html>

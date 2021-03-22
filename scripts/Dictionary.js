@@ -22,6 +22,7 @@ function update_view(){
         document.getElementById(word).innerHTML = languages[language][word];
     }
 }
+
 function changeLanguage(lang){
     language = lang;
     setLanguage(lang);

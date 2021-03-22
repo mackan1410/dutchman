@@ -311,23 +311,23 @@ function beverageModel() {
     },
     'hi': {
       'standard': {
-        'text': 'Standard',
+        'text': 'मानक',
         'value': '0'
       },
       'lowAbv': {
-        'text': 'Alcohol content(lowest first)',
+        'text': 'शराब की मात्रा (सबसे पहले)',
         'value': '1'
       },
       'highAbv': {
-        'text': 'Alcohol content(highest first)',
+        'text': 'शराब की मात्रा (सबसे पहले)',
         'value': '2'
       },
       'lowPrice': {
-        'text': 'Price(lowest first)',
+        'text': 'क़ीमत: पहला सबसे कम)',
         'value': '3'
       },
       'highPrice': {
-        'text': 'Price(highest first)',
+        'text': 'मूल्य: उच्चतम पहले)',
         'value': '4'
       }
     }
@@ -363,15 +363,15 @@ function beverageModel() {
     },
     'hi': {
       'beer': {
-        'text': 'beer',
+        'text': 'बीयर',
         'value': '1'
       },
       'wine': {
-        'text': 'wine',
+        'text': 'शराब',
         'value': '2'
       },
       'spirits': {
-        'text': 'spirits',
+        'text': 'शराब',
         'value': '3'
       }
     }
@@ -689,12 +689,12 @@ function menuModel() {
         'addMessage': 'has been added to your order.'
       },
       'hi': {
-        'addBtnText': 'Add to order',
-        'dragNdropText': 'Drag and drop here',
-        'currency': '$',
-        'hits': 'Hits',
-        'cartLinkText': 'See order',
-        'addMessage': 'has been added to your order.'
+        'addBtnText': 'आदेश में जोड़ें',
+        'dragNdropText': 'यहां खींचें और छोड़ें',
+        'currency': '₹',
+        'hits': 'हिट्स',
+        'cartLinkText': 'आदेश देखें',
+        'addMessage': 'आपके आदेश में जोड़ दिया गया है.'
       }
     };
 
@@ -787,7 +787,7 @@ function managerModel() {
       'nameFieldCategoryText': 'सदाबहार (आईडी)',
       'removeBtnCategoryText': 'हटाएं',
       'editBtnCategoryText': 'संपादित करें',
-      'updateBtnText': 'Update',
+      'updateBtnText': 'अपडेट करें',
       'removeConfirmMessage': 'क्या आप वास्तव में इस आइटम को निकालना चाहते हैं?',
       'editConfirmMessage': 'क्या आप वास्तव में इस आइटम को संपादित करना चाहते हैं?'
     }
@@ -834,6 +834,14 @@ function navbarModel() {
         'text': 'Meny',
         'href': 'MVCmenu.html'
       },
+      'managerSecText': {
+        'text': 'Ring Securitas',
+        'href': 'MVCmanager.html'
+      },
+      'secAlert': {
+        'text': 'Säkerhetsvakterna är på väg',
+        'href': 'MVCmanager.html'
+      },
       'managerOptText': {
         'text': 'Hantera lagret',
         'href': 'MVCmanager.html'
@@ -859,6 +867,14 @@ function navbarModel() {
       'cartOptText': {
         'text': 'My order',
         'href': 'MVCcart.html'
+      },
+      'managerSecText': {
+        'text': 'Call sercurity',
+        'href': 'MVCmanager.html'
+      },
+      'secAlert': {
+        'text': 'Security is on its way',
+        'href': 'MVCmanager.html'
       },
       'menuOptText': {
         'text': 'Menu',
@@ -893,6 +909,14 @@ function navbarModel() {
       'menuOptText': {
         'text': 'मेन्य',
         'href': 'MVCmenu.html'
+      },
+      'managerSecText': {
+        'text': 'सुरक्षा को बुलाओ',
+        'href': 'MVCmanager.html'
+      },
+      'secAlert': {
+        'text': 'सुरक्षा जारी है',
+        'href': 'MVCmanager.html'
       },
       'managerOptText': {
         'text': 'स्टॉक प्रबंधित करें',

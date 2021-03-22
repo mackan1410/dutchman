@@ -834,6 +834,10 @@ function navbarModel() {
         'text': 'Meny',
         'href': 'MVCmenu.html'
       },
+      'specialDrink': {
+        'text' : 'Special drinkar',
+        'href' : 'MVCspecialDrinks.html'
+      },
       'managerSecText': {
         'text': 'Ring Securitas',
         'href': 'MVCmanager.html'
@@ -871,6 +875,10 @@ function navbarModel() {
       'managerSecText': {
         'text': 'Call sercurity',
         'href': 'MVCmanager.html'
+      },
+      'specialDrink': {
+        'text' : 'Special drink',
+        'href' : 'MVCspecialDrinks.html'
       },
       'secAlert': {
         'text': 'Security is on its way',
@@ -913,6 +921,10 @@ function navbarModel() {
       'managerSecText': {
         'text': 'सुरक्षा को बुलाओ',
         'href': 'MVCmanager.html'
+      },
+      'specialDrink': {
+        'text' : 'विशेष पेय',
+        'href' : 'MVCspecialDrinks.html'
       },
       'secAlert': {
         'text': 'सुरक्षा जारी है',

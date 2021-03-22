@@ -75,6 +75,40 @@ a{ text-decoration: none;}
 #manager-sec{
   color: red;
 }
+
+
+.myDiv {
+  border: 5px outset cornflowerblue;
+  background-color: darkblue;
+  text-align: center;
+}
+.menu {
+  border: 5px outset cornflowerblue;
+  background-color: white;
+  text-align: center;
+  margin: 10px;
+  width: 50%;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.drinkItem {
+  border: 0px solid black;
+  text-align: center;
+  font-size: 17px;
+}
+.fetch {
+  border: 5px outset white;
+  background-color: cornflowerblue;
+  text-align: center;
+  width: 50%;
+  font-size: 14px;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 /*
   Media queries for smaller devices
 */

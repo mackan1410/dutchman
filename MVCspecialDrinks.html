@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Flying Dutchman</title>
+    <link rel="stylesheet" type="text/css" href="styles/homepage.css">
+    <script src = "scripts/ModelFunctions.js" defer> </script>
+    <script src = "scripts/models.js"> </script>
+    <link rel="stylesheet" href="styles/navbar.css"/>
+
+</head>
+<body>
+    <script>
+        window.onload = function() {
+            var pass = prompt("Entre passcode", "");
+            if (pass != "1234"){
+                window.location.href = "MVCmenu.html";
+            }
+        }
+    </script>
+
+    <div class="myDiv">
+        <h2>This is the special drinks menu</h2>
+
+    </div>
+    <div class="menu">
+        <h2>Menu</h2>
+        <div class="drinkItem">
+            <h2>Cosmopolitan </h2>
+        </div>
+        <div class="drinkItem">
+            <h2>Strawberry Daquiri </h2>
+        </div>
+        <div class="drinkItem">
+            <h2>Martini</h2>
+        </div>
+        <div class="drinkItem">
+            <h2>Tequila sunrise</h2>
+        </div>
+        <div class="drinkItem">
+            <h2>Old Fashioned</h2>
+        </div>
+        <div class="drinkItem">
+            <h2>Bloody Mary</h2>
+        </div>
+
+    </div>
+
+    <div class="fetch">
+        <h2>You can fetch all of these drinks at the bar or fridge</h2>
+    </div>
+    <button type="button" onclick= "location.href= 'MVCmenu.html'" >Back button</button>
+</body>

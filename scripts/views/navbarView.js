@@ -1,6 +1,6 @@
 function navbarView(container, currentPage) {
   this.container = container;
-  this.currentPage = currentPage;
+  //this.currentPage = currentPage;
   this.onclickLogout = null;
 
   this.render = function(data) {
@@ -12,6 +12,8 @@ function navbarView(container, currentPage) {
           <div id="menu-opt" data-page="menu" class="navbar-item"><a href="${data.dict.menuOptText.href}">${data.dict.menuOptText.text}</a></div>
           <div id="cart-opt" data-page="cart" class="navbar-item"><a href="${data.dict.cartOptText.href}"><i class="fas fa-shopping-cart"></i>&nbsp;${data.dict.cartOptText.text}</a></div>
           <div id="manager-sec" data-page="manager" class="navbar-item"><a onclick="alert('${data.dict.secAlert.text}')"><i class="fas fa-shield-alt"></i>&nbsp;${data.dict.managerSecText.text}</a></div>
+          <div id="special-drink" data-page="specialDrink" class="navbar-item"><a href="${data.dict.specialDrink.href}">${data.dict.specialDrink.text}</a></div>
+
           <!--div id="cart-opt" data-page="tableview" class="navbar-item"><a href="${data.dict.barviewOptText.text}"><i class="fas fa-table-view"></i>${data.dict.barviewOptText.text}</a></div-->
           <!--div id="manager-opt" data-page="manager" class="navbar-item"><a href="${data.dict.managerOptText.href}"><i class="fas fa-users-cog"></i>&nbsp;${data.dict.managerOptText.text}</a></div-->
           <div id="user-dropdown" class="navbar-item">
@@ -43,6 +45,7 @@ function navbarView(container, currentPage) {
         $('#manager-opt').hide();
         $('bartender-opt').hide();
         $('#manager-sec').hide();
+        $('#special-drink').hide();
         return;
       }
 
@@ -54,6 +57,10 @@ function navbarView(container, currentPage) {
         $('bartender-opt').hide();
         $('#manager-sec').hide();
       }
+      if(data.credentials === '0') {
+       $('#special-drink').hide();
+       return;
+    }
   }
 
   return this;

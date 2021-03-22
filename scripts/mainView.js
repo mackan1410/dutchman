@@ -13,6 +13,7 @@ function createMenuView(container, beverages, lang, beerFilter, wineFilter, spir
   const dict = {};
 
   container.append($.parseHTML(`
+
     <div class="content">
       <div id="message-field"></div>
       <div>
@@ -34,13 +35,18 @@ function createMenuView(container, beverages, lang, beerFilter, wineFilter, spir
 
       <div>
         <h3 id="hit-counter" style="border-bottom: 1px solid black; padding-bottom: 10px">Träffar</h3>
+        <div id="scroll-container">
         <div id="drink-list" class="list"></div>
+        </div>
+      </div>
+      <div id="droppable" style="width: 100%; height: 50px; text-align: center; line-height: 50px; border-top: 1px solid black; margin-top: 20px;">
+        Drag and drop here to add to cart
       </div>
     </div>`));
 
+    if(!isLoggedIn) document.getElementById('droppable').classList.add('hidden');
+
     createMenuCards($('#drink-list'), beverages, lang, beerFilter, wineFilter, spiritsFilter, sortingType, isLoggedIn);
-
-
 }
 
 
@@ -54,10 +60,8 @@ function addToOrder(articleId) {
     `));
 
   addToShoppingCart(articleId);
-
-
-
 }
+
 
 function createMenuCards(container, beverages, lang, beerFilter, wineFilter, spiritsFilter, sortingType, isLoggedIn) {
   console.log("sorting type: " + sortingType);
@@ -101,4 +105,22 @@ function createMenuCards(container, beverages, lang, beerFilter, wineFilter, spi
         </div>
       </div>`));
   });
+
+  if(isLoggedIn) {
+    $('.item').draggable({
+      cursor: "move",
+      cursorAt: { top: 10, left: -10 },
+      helper: function( event) {
+          return $( "<div class='ui-widget-header'>" + $(this)[0].childNodes[1].innerHTML + "</div>" );
+        }
+
+      });
+    $('#droppable').droppable({
+      drop: function(event, ui) {
+        let bevId = ui.draggable[0].getAttribute('data-articleId');
+        addToOrder(bevId);
+      }
+    })
+  }
+
 }

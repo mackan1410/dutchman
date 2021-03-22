@@ -1,34 +1,30 @@
 var language = 'sv'
-var languges = {
+var languages = {
     'en': {
         'welcome': "Welcome to The Flying Dutchman",
-        'switch': "Change language",
         'login' : "Log in",
-        'menu' : "Menu",
-        'without' : "Continue without log in"
+        'menu' : "Menu"
     },
     'sv' : {
         'welcome': "Välkommen till The Flying Dutchman",
-        'switch': "Byt språk",
         'login' : "Logga in",
-        'menu' : "Meny",
-        'without' : "Fortsätt utan att logga in"
+        'menu' : "Meny"
+    },
+    'hi' : {
+        'welcome' : "The Flying Dutchman आपका स्वागत है",
+        'login' : "लॉग इन करें",
+        'menu' : "मेन्यू"
     }
-}
-
-function get_string(key) {
-    return languges[language][key];
 }
 
 function update_view(){
-    for (word in languges[language]){
-        document.getElementById(word).innerHTML = languges[language][word];
+    for (word in languages[language]){
+        document.getElementById(word).innerHTML = languages[language][word];
     }
 }
-
-function change_lang() {
-    if (language=='en') {
-        language = 'sv';
-    } else {language = 'en'};
+function changeLanguage(lang){
+    language = lang;
+    setLanguage(lang);
     update_view();
 }
+
